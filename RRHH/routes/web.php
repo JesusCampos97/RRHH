@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SuperAdminController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsuariosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +28,9 @@ Route::get('/home', function () {
 
 Auth::routes();
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');
+//Gestion usuarios
+Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
+Route::post('/listarusuarios', [UsuariosController::class, 'listarusuarios'])->name('listarusuarios');
+
+//Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');
 

@@ -71,6 +71,7 @@
         <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fullcalendar/main.css">
 
         <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css?v=3.2.0">
+        <link rel="stylesheet" href="{{asset('css/template/main.css')}}">
 
         <script>
 
@@ -99,7 +100,7 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item  d-sm-inline-block">
-                        <a href="#" class="nav-link">Home</a>
+                        <a href="/" class="nav-link">Principal</a>
                     </li>
                     <li class="nav-item d-sm-inline-block">
                         <a  href="{{ route('logout') }}" class="nav-link"  onclick="event.preventDefault();

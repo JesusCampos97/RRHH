@@ -54,10 +54,8 @@ class User extends Authenticatable
     public function authorizeRoles($roles)
 
 {
-  if ($this->hasAnyRole($roles)) {
-    return true;
-  }
-  abort(401, 'This action is unauthorized.');
+  abort_unless($this->hasAnyRole($roles), 401);
+        return true;
 }
 public function hasAnyRole($roles)
 {

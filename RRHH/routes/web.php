@@ -23,6 +23,9 @@ Auth::routes();
 //Gestion usuarios
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
 Route::post('/listarusuarios', [UsuariosController::class, 'listarusuarios'])->name('listarusuarios');
+Route::post('/getDataUsuarios', [UsuariosController::class, 'getDataUsuarios'])->name('getDataUsuarios');
+Route::post('/updateUsuarios', [UsuariosController::class, 'updateUsuarios'])->name('updateUsuarios');
+
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');
 

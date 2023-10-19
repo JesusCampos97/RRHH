@@ -179,24 +179,24 @@
         </div>
         <div class="modal-body" style=" margin-top: -2em;">
         
-            <form method="POST"> 
+            <form method="POST" id="updateForm"> 
                 @csrf
                 <hr>
                 <div class="card-body" style="padding: 0;">
                     <div class="form-group">
-                        <label style="font-size:13px" for="nombre"><b>Nombre</b></label>
-                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombreEditar" disabled>
+                        <label style="font-size:13px" for="nombre"><b>Nombre*</b></label>
+                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombreEditar" required>
                     </div>
                     <div class="form-group">
-                        <label style="font-size:13px" for="apellidos"><b>Apellidos</b></label>
-                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Apellidos" name="apellidos" id="apellidosEditar"  disabled>
+                        <label style="font-size:13px" for="apellidos"><b>Apellidos*</b></label>
+                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Apellidos" name="apellidos" id="apellidosEditar" required>
                     </div>
                     <div class="form-group">
-                        <label style="font-size:13px" for="email"><b>Email</b></label>
+                        <label style="font-size:13px" for="email"><b>Email*</b></label>
                         <input class="form-control form-control-border border-width-2" type="email" placeholder="Email" name="email" id="emailEditar" required>
                     </div>
                     <div class="form-group">
-                        <label style="font-size:13px" for="rol-usuario"><b>Rol Usuario</b></label>
+                        <label style="font-size:13px" for="rol-usuario"><b>Rol Usuario*</b></label>
                          <!--<input class="form-control form-control-border border-width-2" type="email" placeholder="Email" name="rol-usuario" id="rol-usuario" required>-->
                         <select class="js-example-responsive js-example-placeholder-single js-states form-control" id="id_label_rol_usuario_update" required>
                             <!-- <optgroup label="Sexo">-->
@@ -209,24 +209,75 @@
                  
                     </div>
 
-                    <div class="form-group">
-                           
-                        <label style="font-size:13px" for="usersname"><b>Username</b></label>
-                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Username" name="usersname" id="usersnameEditar" required>
-                    </div>
-
-                    <div class="form-row row">
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <div class="row">
-                                <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset; " for="dni" class="col-md-6"><b>DNI</b></label>
-                                <input class="form-control form-control-border border-width-2 col-md-6" type="text" placeholder="DNI" name="dni" id="dniEditar" disabled>
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="empresa" class="col-md-4"><b>Empresa*</b></label>
+                                <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_empresa_usuario_update" required>
+                                    <!-- <optgroup label="Sexo">-->
+                                        <option value=""></option>
+                                        @foreach($empresas as $e)
+                                            <option value="{{$e->id}}">{{$e->nombre}}</option>
+                                        @endforeach
+                                    <!--</optgroup>-->
+                                </select>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <div class="row">
-                                <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset; " for="sexo"class="col-md-6"><b>Sexo</b></label>
+                                <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="puesto_trabajo"class="col-md-4"><b>Puesto trabajo*</b></label>
+                                <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_puestos_trabajo_usuario_update" required>
+                                        <option value=""></option>
+                                        @foreach($puestos_trabajo as $p)
+                                            <option value="{{$p->id}}">{{$p->nombre}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Ciudad" class="col-md-4"><b>Ciudad</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Ciudad" name="ciudad" id="ciudadEditar">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Localidad" class="col-md-4"><b>Localidad</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Localidad" name="localidad" id="localidadEditar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="codigo_postal" class="col-md-4"><b>Codigo Postal</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Codigo Postal" name="codigo_postal" id="codigo_postalEditar">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Direccion" class="col-md-4"><b>Direccion</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Direccion" name="direccion" id="direccionEditar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="dni" class="col-md-4"><b>DNI*</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="DNI" name="dni" id="dniEditar" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="row">
+                                <label style="font-size:13px; align-self: center;text-align: center margin-bottom: unset; " for="sexo"class="col-md-4"><b>Sexo*</b></label>
                                 <!--<input class="form-control form-control-border border-width-2 col-md-6" type="number" placeholder="Sexo" name="sexo" id="sexoEditar" disabled>-->
-                                <select class="js-example-disabled js-states form-control col-md-6" id="id_label_single_sexo_update" name="id_label_single_sexo_update" disabled>
+                                <select class="js-example-disabled js-states form-control col-md-8" id="id_label_single_sexo_update" name="id_label_single_sexo_update" required>
                                             <!-- <optgroup label="Sexo">-->
                                                 <option value=""></option>
                                                 <option value="0">Mujer</option>
@@ -237,29 +288,20 @@
                         </div>
                     </div>
 
-                    <div class="form-row row">
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <div class="row">
-                                <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset; " for="telefono" class="col-md-6"><b>Teléfono</b></label>
-                                <input class="form-control form-control-border border-width-2 col-md-6" type="number" placeholder="Teléfono" name="telefono" id="telefonoEditar" required>
+                                <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="telefono" class="col-md-4"><b>Teléfono*</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8" type="number" placeholder="Teléfono" name="telefono" id="telefonoEditar" required>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <div class="row">
-                                <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset; " for="fechaNac" class="col-md-6"><b>Fecha nacimiento</b></label>
-                                <input class="form-control form-control-border border-width-2 col-md-6"  type="date" placeholder="Fecha nacimiento" name="fechaNac" id="fechaNacEditar" disabled>
+                                <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="fechaNac" class="col-md-4"><b>Fecha nacimiento*</b></label>
+                                <input class="form-control form-control-border border-width-2 col-md-8"  type="date" placeholder="Fecha nacimiento" name="fechaNac" id="fechaNacEditar" required>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <select multiple="multiple" id="duallistbox_gimnasio_update[]" name="duallistbox_gimnasio_update[]" title="duallistbox_gimnasio_update[]">
-                                    
-                        </select>
-                    </div>
-                    
-                      
-                 
                </div>
 
                 <hr>
@@ -389,7 +431,7 @@
              //console.log(data)
             //alert('You clicked on ' + data["id"] + "'s row");
             $.ajax({
-                url: "",
+                url: "{{route('getDataUsuarios')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -405,30 +447,19 @@
                     console.log(dataResult)
                     //console.log(dataResult[1])
                     dataJson=JSON.parse(dataResult)
-                    console.log(dataJson[1])
-                    document.getElementById('nombreEditar').value=dataJson[0][0]["nombre"];
-                    document.getElementById('apellidosEditar').value=dataJson[0][0]["apellidos"];
-                    document.getElementById('dniEditar').value=dataJson[0][0]["dni"];
+                    document.getElementById('nombreEditar').value=dataJson[0]["name"];
+                    document.getElementById('apellidosEditar').value=dataJson[0]["apellidos"];
+                    document.getElementById('dniEditar').value=dataJson[0]["DNI"];
                     //document.getElementById('sexoEditar').value=dataJson[0]["sexo"];
-                    $("#id_label_single_sexo_update").val(dataJson[0][0]["sexo"])                   
-                    document.getElementById('emailEditar').value=dataJson[0][0]["email"];
-                    document.getElementById('telefonoEditar').value=dataJson[0][0]["telefono"];
-                    document.getElementById('fechaNacEditar').value=dataJson[0][0]["fechaNac"];
-                    document.getElementById('usersnameEditar').value=dataJson[0][0]["usersname"];
-                    $("#id_label_rol_usuario_update").val(dataJson[0][0]["id_role"]) 
-                    //$("#duallistbox_gimnasio_update[]").val(dataJson[0]["id_role"])                 
-                   
+                    $("#id_label_single_sexo_update").val(dataJson[0]["sexo"])                   
+                    document.getElementById('emailEditar').value=dataJson[0]["email"];
+                    document.getElementById('telefonoEditar').value=dataJson[0]["telefono"];
+                    document.getElementById('fechaNacEditar').value=dataJson[0]["fechaNac"];
+                    document.getElementById('ciudadEditar').value=dataJson[0]["ciudad"];
+                    $("#id_label_rol_usuario_update").val(dataJson[0]["role_id"]) 
+                    $("#id_label_empresa_usuario_update").val(dataJson[0]["id_empresa"]) 
+                    $("#id_label_puestos_trabajo_usuario_update").val(dataJson[0]["id_puesto_trabajo"]) 
 
-                     $('select[name="duallistbox_gimnasio_update[]"] > option').each(function() {
-                        console.log( $(this).val())
-                        for(i=0;i<dataJson[1].length;i++){
-                            if($(this).val()==dataJson[1][i]["gimnasio_id"])
-                                $(this).prop("selected", true)
-                        }
-                        
-                    });
-
-                    duallistbox_gimnasio_update.bootstrapDualListbox('refresh');
                     $('#updateModal').modal('show');        
                 },
                 error: function(e){
@@ -533,12 +564,28 @@
         }); 
 
         //updatedata
-        $("#updateDataButton").click(function(){
-            //if select gimnasio id == 0 
-            //e.preventDefault
-            console.log($('#sexoEditar').val())
+        $("#updateDataButton").click(function(e){
+            // Suponiendo que tu formulario tenga el ID 'miFormulario':
+            var formulario = $('#updateForm');
+
+            // Validación de campos requeridos
+            var todosLosCamposSonValidos = true;
+
+            formulario.find('input[required]').each(function(){
+                if ($(this).val() === '') {
+                    todosLosCamposSonValidos = false;
+                    return false; // salir del bucle
+                }
+            });
+
+            // Si hay un campo que no es válido:
+            if (!todosLosCamposSonValidos) {
+                e.preventDefault();
+                msgError('Por favor, complete todos los campos requeridos')
+                return;
+            }
             $.ajax({
-                url: "",
+                url: "{{route('updateUsuarios')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -546,17 +593,19 @@
                     nombre: $('#nombreEditar').val(),
                     apellidos: $('#apellidosEditar').val(),
                     dni: $('#dniEditar').val(),
-                    usersname: $('#usersnameEditar').val(),
+                    ciudad: $('#ciudadEditar').val(),
+                    localidad: $('#localidadEditar').val(),
+                    codigo_postal: $('#codigo_postalEditar').val(),
+                    direccion: $('#direccionEditar').val(),
                     sexo: $('#id_label_single_sexo_update').val(),
                     email: $('#emailEditar').val(),
                     telefono: $('#telefonoEditar').val(),
                     fechaNac: $('#fechaNacEditar').val(),
                     role_id: $("#id_label_rol_usuario_update").val(),
-                    gimnasio_id: $('select[name="duallistbox_gimnasio_update[]"]').val(),
+                    id_empresa: $("#id_label_empresa_usuario_update").val(),
+                    id_puesto_trabajo: $("#id_label_puestos_trabajo_usuario_update").val(),
                     id: data["id"]
-
                 },
-               // $(".js-example-disabled").select2();
 
                 success: function(dataResult){
                     //console.log(dataResult)

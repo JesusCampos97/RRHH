@@ -39,4 +39,16 @@ trait Utils{
 
         return $select;
     }
+
+    public function executeUpdate($sql){
+
+        try{
+            $update=DB::update($sql);
+        } catch (\Illuminate\Database\QueryException $exception) {
+            Session::flash('error', Session::get('error').". Excepción en la selección de datos.");
+            return false;
+        }        
+
+        return $update;
+    }
 }

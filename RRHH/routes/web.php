@@ -24,7 +24,9 @@ Auth::routes();
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
 Route::post('/listarusuarios', [UsuariosController::class, 'listarusuarios'])->name('listarusuarios');
 Route::post('/getDataUsuarios', [UsuariosController::class, 'getDataUsuarios'])->name('getDataUsuarios');
-Route::post('/updateUsuarios', [UsuariosController::class, 'updateUsuarios'])->name('updateUsuarios');
+Route::post('/updateUsuario', [UsuariosController::class, 'updateUsuario'])->name('updateUsuario');
+Route::post('/insertUsuario', [UsuariosController::class, 'insertUsuario'])->name('insertUsuario');
+Route::post('/deleteUsuario', [UsuariosController::class, 'deleteUsuario'])->name('deleteUsuario');
 
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');

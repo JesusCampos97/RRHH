@@ -26,7 +26,7 @@ Route::post('/listarusuarios', [UsuariosController::class, 'listarusuarios'])->n
 Route::post('/getDataUsuarios', [UsuariosController::class, 'getDataUsuarios'])->name('getDataUsuarios');
 Route::post('/updateUsuario', [UsuariosController::class, 'updateUsuario'])->name('updateUsuario');
 Route::post('/insertUsuario', [UsuariosController::class, 'insertUsuario'])->name('insertUsuario');
-Route::post('/deleteUsuario', [UsuariosController::class, 'deleteUsuario'])->name('deleteUsuario');
+Route::post('/activadesactivaUsuario', [UsuariosController::class, 'activadesactivaUsuario'])->name('activadesactivaUsuario');
 
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');

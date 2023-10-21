@@ -58,12 +58,13 @@ legend.scheduler-border {
 }
 /* COLOR DE LOS TABULADORES */
 .nav-pills .nav-link:not(.active):hover {
-    color: #132E65;
+    color: #132E65 !important;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #132E65;
 }
+
 
 .tituloRRHH{
     color: #FF2D9B !important; 

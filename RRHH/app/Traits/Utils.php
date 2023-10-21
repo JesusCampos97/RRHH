@@ -22,7 +22,6 @@ trait Utils{
         try{
             DB::insert(DB::raw($sql));
         } catch (\Illuminate\Database\QueryException $exception) {
-            dd($exception);
             Session::flash('error', Session::get('error').". Excepción en log.");
             return false;
         }
@@ -64,6 +63,16 @@ trait Utils{
         return DB::getPdo()->lastInsertId();
     }
 
+    public function executeDelete($sql){
 
+        try{
+            $insert=DB::delete($sql);
+        } catch (\Illuminate\Database\QueryException $exception) {
+            Session::flash('error', Session::get('error').". Excepción en el borrado de datos.");
+            return false;
+        }        
+
+        return true;
+    }
 
 }

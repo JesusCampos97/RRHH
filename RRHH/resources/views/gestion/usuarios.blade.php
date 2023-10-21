@@ -12,16 +12,39 @@
                 </div>
 
                 <div class="card-body">
-                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline"  cellspacing="0" width="100%" top="2em">
-                                    
-                                </table> 
+
+                    <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab-usuarios-activos" data-toggle="pill" href="#tab-usuarios-activos-tab" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Usuarios activos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab-usuarios-no-activos" data-toggle="pill" href="#tab-usuarios-no-activos-tab" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Usuarios no activos</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="custom-content-below-tabContent">
+                        <div class="tab-pane fade active show" id="tab-usuarios-activos-tab" role="tabpanel" aria-labelledby="tab-usuarios-activos">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline"  cellspacing="0" width="100%" top="2em">
+                                            
+                                        </table> 
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
+                        <div class="tab-pane fade" id="tab-usuarios-no-activos-tab" role="tabpanel" aria-labelledby="tab-usuarios-no-activos">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="table_2" class="table table-bordered table-striped dataTable dtr-inline"  cellspacing="0" width="100%" top="2em">
+                                            
+                                        </table> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,7 +56,7 @@
 <div>
 
     <div class="floating-container">
-        <div class="floating-button btn btn-success" type="reset" data-toggle="modal" data-target="#createModal">
+        <div class="floating-button btn" type="reset" data-toggle="modal" data-target="#createModal">
             +
         </div>
     </div>  
@@ -89,7 +112,7 @@
                         </div>
     
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-11">
                                 <div class="row">
                                     <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="empresa" class="col-md-4"><b>Empresa*</b></label>
                                     <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_empresa_usuario" required>
@@ -102,7 +125,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="col-md-1">
+                                <button type="button" id="insertEmpresaButton" class="btn btn-outline-primary btn-block"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="form-group col-md-11">
                                 <div class="row">
                                     <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="puesto_trabajo"class="col-md-4"><b>Puesto trabajo*</b></label>
                                     <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_puestos_trabajo_usuario" required>
@@ -112,6 +138,9 @@
                                             @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button" id="insertPuestosButton" class="btn btn-outline-primary btn-block"><i class="fa fa-plus"></i></button>
                             </div>
                         </div>
     
@@ -247,7 +276,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-11">
                             <div class="row">
                                 <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="empresa" class="col-md-4"><b>Empresa*</b></label>
                                 <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_empresa_usuario_update" required>
@@ -260,7 +289,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="col-md-1">
+                            <button type="button" id="insertEmpresaButtonEditar" class="btn btn-outline-primary btn-block"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="form-group col-md-11">
                             <div class="row">
                                 <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="puesto_trabajo"class="col-md-4"><b>Puesto trabajo*</b></label>
                                 <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_puestos_trabajo_usuario_update" required>
@@ -270,6 +302,9 @@
                                         @endforeach
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" id="insertPuestosButtonEditar" class="btn btn-outline-primary btn-block"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
 
@@ -344,7 +379,7 @@
                 <hr>
                 <div class="card-footer" style="background-color: white; padding: 0;">
                                          
-                    <button type="button" class="btn btn-danger float-left"  id="" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</button>             
+                    <button type="button" class="btn btn-danger float-left"  id="" data-bs-toggle="modal" data-bs-target="#deleteModal">Marcar como inactivo</button>             
                     <button type="button"   id="updateDataButton" class="btn btn-primary float-right" >Aceptar</button>
                     <button type="button" class="btn btn-secondary float-right  mr-1"  id="UpdateDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
 
@@ -364,7 +399,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h1>Eliminar Usuario</h1>
+            <h1>Desactivar Usuario</h1>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -377,7 +412,7 @@
                 <hr>
                 <div class="container" >
                   <div class="form-group">
-                    <p>¿Deseas eliminar el registro?</p> 
+                    <p>¿Deseas marcar como inactivo al usuario?</p> 
                   </div>                     
               
                 </div>
@@ -385,6 +420,40 @@
                 <div class="card-footer" style="background-color: white; padding: 0;">
                     <button type="button"  class="btn btn-secondary float-left"  id="DeleteDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button"  id="DeleteDataButton" class="btn btn-primary float-right">Aceptar</button>
+                </div>
+              
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal  Delete-->
+<div class="modal fade" id="updateModal_NoActivo" tabindex="-1" role="dialog" aria-labelledby="updateModal_NoActivo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Activar Usuario</h1>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+        </div>
+        <div class="modal-body" style="margin-top:-2em">
+        
+            <form method="POST"> 
+                @csrf
+                <hr>
+                <div class="container" >
+                  <div class="form-group">
+                    <p>¿Deseas volver a activar el usuario?</p> 
+                  </div>                     
+              
+                </div>
+               <hr>
+                <div class="card-footer" style="background-color: white; padding: 0;">
+                    <button type="button"  class="btn btn-secondary float-left"  id="NoActivoButtonClose" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button"  id="NoActivoButton" class="btn btn-primary float-right">Aceptar</button>
                 </div>
               
               </form>
@@ -414,7 +483,8 @@
                 url: "{{route('listarusuarios')}}",
                 type: 'post',
                 data: {
-                    "_token": $("meta[name='csrf-token']").attr("content")
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+                    "activo": 1
                 },
                                        
             },
@@ -432,10 +502,38 @@
                         return data;
                 }
             } },{ data: "telefono", title: "Teléfono" },
-            { data: "fechaNac", render: DataTable.render.datetime( 'D/M/YYYY' ), title: "Fecha Nacimiento" }, { data: "ciudad", title: "Ciudad" },
-            { data: "llavero", title: "Llavero" }],
+            { data: "fechaNac", render: DataTable.render.datetime( 'D/M/YYYY' ), title: "Fecha Nacimiento" }, { data: "ciudad", title: "Ciudad" }],
         });
 
+        var datatable2 = $('#table_2').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+            ajax: {
+                url: "{{route('listarusuarios')}}",
+                type: 'post',
+                data: {
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+                    "activo": 0
+                },
+                                       
+            },
+            responsive: true,
+            columns: [{ data: "name", title: "Nombre" }, { data: "apellidos", title: "Apellidos"}, { data: "email", title: "Email" }, { data: "DNI", title: "DNI" }, 
+            { data: "sexo", title: "Sexo", render: function ( data, type, row ) {
+                switch (data) {
+                    case 0:
+                        return 'Mujer';
+                        break;
+                    case 1:
+                        return 'Hombre';
+                        break;
+                    default:
+                        return data;
+                }
+            } },{ data: "telefono", title: "Teléfono" },
+            { data: "fechaNac", render: DataTable.render.datetime( 'D/M/YYYY' ), title: "Fecha Nacimiento" }, { data: "ciudad", title: "Ciudad" }],
+        });
 
         //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
         $('#table_id tbody').on('click', 'td.dtr-control', function (e) {
@@ -451,6 +549,25 @@
             if (//tr.hasClass('dt-hasChild') || !row.child.isShown()
                 //datatable te da una funcion que te dice si el responsive esta activado o no
                 datatable.responsive.hasHidden() ) {
+                //no muestres el modal
+                e.stopPropagation();
+            } 
+        } );
+
+        //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
+        $('#table_2 tbody').on('click', 'td.dtr-control', function (e) {
+
+            //me cojo la row del td al que he dado click
+            var tr = $(this).closest('tr');
+            //cojo la row del datatable para ver si se ha mostrado
+            var row = datatable2.row(tr);
+
+            //de la row al que he dado click, comprueba si tiene la clase, 
+            //si es el casoes que no estaba abierto y paro la propagacion del modal
+            //o en el caso de que este ya abierto comprobamos con el datatable 
+            if (//tr.hasClass('dt-hasChild') || !row.child.isShown()
+                //datatable te da una funcion que te dice si el responsive esta activado o no
+                datatable2.responsive.hasHidden() ) {
                 //no muestres el modal
                 e.stopPropagation();
             } 
@@ -502,16 +619,57 @@
             });
         });
 
+        var data2 = null
+        $('#table_2 tbody').on('click', 'tr', function () {
+            data2 = datatable2.row(this).data();
+            datatable2.row(this).index
+            $('#updateModal_NoActivo').modal('show');        
+
+        });
 
         //deletedata
-        $("#DeleteDataButton").click(function(){
+        $("#NoActivoButton").click(function(){
             $.ajax({
-                url: "{{route('deleteUsuario')}}",
+                url: "{{route('activadesactivaUsuario')}}",
                 type: "POST",
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}',
-                    id: data["id"]
+                    id: data2["id"],
+                    activo: 1
+
+                },
+                success: function(dataResult){
+                    //console.log(dataResult)
+
+                    if(dataResult["code"]==200){
+                        msgSuccess(dataResult["msg"])
+                        $('#NoActivoButtonClose').click();
+                        datatable.ajax.reload();
+                        datatable2.ajax.reload();
+                    }else{
+                        msgError(dataResult["msg"])
+                    }
+                  
+                },
+                error: function(e){
+                    console.log(e)
+                    msgError("Error genérico. Por favor, inténtelo más tarde.")
+                }
+            });
+        }); 
+
+
+        //deletedata
+        $("#DeleteDataButton").click(function(){
+            $.ajax({
+                url: "{{route('activadesactivaUsuario')}}",
+                type: "POST",
+                cache: false,
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    id: data["id"],
+                    activo: 0
 
                 },
                 success: function(dataResult){
@@ -522,6 +680,8 @@
                         $('#DeleteDataButtonClose').click();
                         $('#UpdateDataButtonClose').click();
                         datatable.ajax.reload();
+                        datatable2.ajax.reload();
+
                     }else{
                         msgError(dataResult["msg"])
                     }

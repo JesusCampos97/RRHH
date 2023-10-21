@@ -45,10 +45,25 @@ trait Utils{
         try{
             $update=DB::update($sql);
         } catch (\Illuminate\Database\QueryException $exception) {
-            Session::flash('error', Session::get('error').". Excepción en la selección de datos.");
+            Session::flash('error', Session::get('error').". Excepción en la actualización de datos.");
             return false;
         }        
 
-        return $update;
+        return true;
     }
+
+    public function executeInsert($sql){
+
+        try{
+            $insert=DB::insert($sql);
+        } catch (\Illuminate\Database\QueryException $exception) {
+            Session::flash('error', Session::get('error').". Excepción en la inserción de datos.");
+            return false;
+        }        
+
+        return DB::getPdo()->lastInsertId();
+    }
+
+
+
 }

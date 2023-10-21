@@ -59,98 +59,135 @@
              
             <div class="modal-body" style=" margin-top: -2em;">
                 
-                <form action="" method="POST" name="createUser"> <!--onsubmit = "return validaedad(document.getElementById('fechanaci').value)"-->
+                <form action="" method="POST" name="createUser" id="createUser">
                     @csrf
                     <hr>
                     <div class="card-body" style="padding: 0;">
                         <div class="form-group">
-                            <label style="font-size:13px" for="nombre"><b>Nombre</b></label>
+                            <label style="font-size:13px" for="nombre"><b>Nombre*</b></label>
                             <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombre" required>
                         </div>
                         <div class="form-group">
-                            <label style="font-size:13px" for="apellidos"><b>Apellidos</b></label>
-                            <input class="form-control form-control-border border-width-2" type="text" placeholder="Apellidos" name="apellidos" id="apellidos"  required>
+                            <label style="font-size:13px" for="apellidos"><b>Apellidos*</b></label>
+                            <input class="form-control form-control-border border-width-2" type="text" placeholder="Apellidos" name="apellidos" id="apellidos" required>
                         </div>
                         <div class="form-group">
-                            <label style="font-size:13px" for="email"><b>Email</b></label>
+                            <label style="font-size:13px" for="email"><b>Email*</b></label>
                             <input class="form-control form-control-border border-width-2" type="email" placeholder="Email" name="email" id="email" required>
                         </div>
                         <div class="form-group">
-                            <label style="font-size:13px" for="rol-usuario"><b>Rol Usuario</b></label>
-                             <!--<input class="form-control form-control-border border-width-2" type="email" placeholder="Email" name="rol-usuario" id="rol-usuario" required>-->
-                            <select class="js-example-responsive js-example-placeholder-single js-states form-control" id="id_label_rol-usuario" required>
+                            <label style="font-size:13px" for="rol-usuario"><b>Rol Usuario*</b></label>
+                            <select class="js-example-responsive js-example-placeholder-single js-states form-control" id="id_label_rol_usuario" required>
                                 <!-- <optgroup label="Sexo">-->
                                     <option value=""></option>
                                     @foreach($roles as $r)
                                         <option value="{{$r->id}}">{{$r->name}}</option>
-                                    @endforeach                                    
+                                    @endforeach
                                 <!--</optgroup>-->
                             </select>
                      
                         </div>
-
-                        <div class="form-row row">
+    
+                        <div class="row">
                             <div class="form-group col-md-6">
                                 <div class="row">
-                                    <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset;" for="dni" class="col-md-6"><b>DNI</b></label>
-                                    <input class="form-control form-control-border border-width-2 col-md-6" type="text" placeholder="DNI" name="dni" id="dni" required>
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="empresa" class="col-md-4"><b>Empresa*</b></label>
+                                    <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_empresa_usuario" required>
+                                        <!-- <optgroup label="Sexo">-->
+                                            <option value=""></option>
+                                            @foreach($empresas as $e)
+                                                <option value="{{$e->id}}">{{$e->nombre}}</option>
+                                            @endforeach
+                                        <!--</optgroup>-->
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <div class="row">
-                                    <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset;" for="sexo"class="col-md-6"><b>Sexo</b></label>
-                                    <!--<input class="form-control form-control-border border-width-2 col-md-6" type="number" placeholder="Sexo" name="sexo" id="sexo" required>-->
-                                        <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-6" id="id_label_single_sexo" name="id_label_single_sexo" required>
-                                           <!-- <optgroup label="Sexo">-->
-                                                <option value=""></option>
-                                                <option value="0">Mujer</option>
-                                                <option value="1">Hombre</option>
-                                            <!--</optgroup>-->
-                                        </select>
-                                    
+                                    <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="puesto_trabajo"class="col-md-4"><b>Puesto trabajo*</b></label>
+                                    <select class="js-example-responsive js-example-placeholder-single js-states form-control col-md-8" id="id_label_puestos_trabajo_usuario" required>
+                                            <option value=""></option>
+                                            @foreach($puestos_trabajo as $p)
+                                                <option value="{{$p->id}}">{{$p->nombre}}</option>
+                                            @endforeach
+                                    </select>
                                 </div>
-                            </div>                          
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Ciudad" class="col-md-4"><b>Ciudad</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Ciudad" name="ciudad" id="ciudad">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Localidad" class="col-md-4"><b>Localidad</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Localidad" name="localidad" id="localidad">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="codigo_postal" class="col-md-4"><b>Codigo Postal</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Codigo Postal" name="codigo_postal" id="codigo_postal">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="Direccion" class="col-md-4"><b>Direccion</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="Direccion" name="direccion" id="direccion">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="dni" class="col-md-4"><b>DNI*</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="text" placeholder="DNI" name="dni" id="dni" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center;text-align: center margin-bottom: unset; " for="sexo"class="col-md-4"><b>Sexo*</b></label>
+                                    <!--<input class="form-control form-control-border border-width-2 col-md-6" type="number" placeholder="Sexo" name="sexo" id="sexoEditar" disabled>-->
+                                    <select class="js-example-disabled js-states form-control col-md-8" id="id_label_single_sexo" name="id_label_single_sexo" required>
+                                                <!-- <optgroup label="Sexo">-->
+                                                    <option value=""></option>
+                                                    <option value="0">Mujer</option>
+                                                    <option value="1">Hombre</option>
+                                                <!--</optgroup>-->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center;margin-bottom: unset; " for="telefono" class="col-md-4"><b>Teléfono*</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8" type="number" placeholder="Teléfono" name="telefono" id="telefono" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <label style="font-size:13px; align-self: center; margin-bottom: unset; " for="fechaNac" class="col-md-4"><b>Fecha nacimiento*</b></label>
+                                    <input class="form-control form-control-border border-width-2 col-md-8"  type="date" placeholder="Fecha nacimiento" name="fechaNac" id="fechaNac" required>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-row row">
-                            <div class="form-group col-md-6">
-                                <div class="row">
-                                    <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset;" for="telefono" class="col-md-6"><b>Teléfono</b></label>
-                                    <input class="form-control form-control-border border-width-2 col-md-6" type="number" placeholder="Teléfono" name="telefono" id="telefono"  required>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <div class="row">
-                                    <label style="font-size:13px; align-self: center;
-                                    text-align: center;
-                                    margin-bottom: unset;" for="fechaNac" class="col-md-6"><b>Fecha nacimiento</b></label>
-                                    <input class="form-control form-control-border border-width-2 col-md-6"  type="date" placeholder="Fecha nacimiento" name="fechaNac" id="fechaNac" required>
-                                </div>
-                            </div>
+                        <div class="alert alert-info alert-dismissible">
+                            <h5><i class="icon fas fa-info"></i> ¡Atención!</h5>
+                            La contraseña inicial del usuario será su DNI.
+                            <br>
+                            Además, el usuario deberá de cambiarla en su primer inicio de sesión.
                         </div>
-
-                        <div class="form-row row">
-                            <div class="form-group col-md-6">
-                                <div class="row">
-                                    <label style="font-size:13px; align-self: center;text-align: center; margin-bottom: unset;" for="usersname" class="col-md-6"><b>Username</b></label>
-                                    <input class="form-control form-control-border border-width-2 col-md-6" type="text" placeholder="Username" name="usersname" id="usersname" required>
-                                </div>
-                            </div>
-                            <!--<div class="form-group col-md-6">
-                                <div class="row">
-                                    <label style="font-size:13px; align-self: center;
-                                    text-align: center;
-                                    margin-bottom: unset;" for="password" class="col-md-6">Password</label>
-                                    <input  class="form-control form-control-border border-width-2 col-md-6" type="password"  id="password" placeholder="Password" required />
-                                </div>
-                            </div>-->
-                        </div>
-                        <div class="form-group">
-                            <select multiple="multiple" id="duallistbox_gimnasio[]" name="duallistbox_gimnasio[]" title="duallistbox_gimnasio[]">
-                                      
-                              </select>
-                        </div>
-                     
                    </div>
                    <hr>
                     <div class="card-footer" style="background-color: white; padding: 0;">
@@ -367,10 +404,6 @@
     $(document).ready( function () {
         
 
-         var duallistbox_gimnasio = $('select[name="duallistbox_gimnasio[]"]').bootstrapDualListbox();
-         var duallistbox_gimnasio_update = $('select[name="duallistbox_gimnasio_update[]"]').bootstrapDualListbox();
-
-         
         //selectdata
 
         var datatable = $('#table_id').DataTable({
@@ -389,10 +422,10 @@
             columns: [{ data: "name", title: "Nombre" }, { data: "apellidos", title: "Apellidos"}, { data: "email", title: "Email" }, { data: "DNI", title: "DNI" }, 
             { data: "sexo", title: "Sexo", render: function ( data, type, row ) {
                 switch (data) {
-                    case '0':
+                    case 0:
                         return 'Mujer';
                         break;
-                    case '1':
+                    case 1:
                         return 'Hombre';
                         break;
                     default:
@@ -440,9 +473,6 @@
                 },
                 success: function(dataResult){
 
-                    $('select[name="duallistbox_gimnasio_update[]"] > option').each(function() {
-                        $(this).prop("selected", false)
-                    });
 
                     console.log(dataResult)
                     //console.log(dataResult[1])
@@ -456,6 +486,10 @@
                     document.getElementById('telefonoEditar').value=dataJson[0]["telefono"];
                     document.getElementById('fechaNacEditar').value=dataJson[0]["fechaNac"];
                     document.getElementById('ciudadEditar').value=dataJson[0]["ciudad"];
+                    document.getElementById('localidadEditar').value=dataJson[0]["localidad"];
+                    document.getElementById('codigo_postalEditar').value=dataJson[0]["codigo_postal"];
+                    document.getElementById('direccionEditar').value=dataJson[0]["direccion"];
+
                     $("#id_label_rol_usuario_update").val(dataJson[0]["role_id"]) 
                     $("#id_label_empresa_usuario_update").val(dataJson[0]["id_empresa"]) 
                     $("#id_label_puestos_trabajo_usuario_update").val(dataJson[0]["id_puesto_trabajo"]) 
@@ -472,7 +506,7 @@
         //deletedata
         $("#DeleteDataButton").click(function(){
             $.ajax({
-                url: "",
+                url: "{{route('deleteUsuario')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -501,10 +535,27 @@
         }); 
 
         
-
         //insertdata
-        $("#insertDataButton").click(function(){
-            console.log($('select[name="duallistbox_gimnasio[]"]').val())
+        $("#insertDataButton").click(function(e){
+            var formulario = $('#createUser');
+
+            // Validación de campos requeridos
+            var todosLosCamposSonValidos = true;
+
+            formulario.find('input[required]').each(function(){
+                if ($(this).val() === '') {
+                    todosLosCamposSonValidos = false;
+                    return false; // salir del bucle
+                }
+            });
+
+            // Si hay un campo que no es válido:
+            if (!todosLosCamposSonValidos) {
+                e.preventDefault();
+                msgError('Por favor, complete todos los campos requeridos')
+                return;
+            }
+
             let fecha = $('#fechaNac').val();
             let fechaNacimiento = new Date(fecha);
             let dia = fechaNacimiento.getDate() + 1;
@@ -518,27 +569,29 @@
             if (mayorEdad) {
                 
                 $.ajax({
-                    url: "",
+                    url: "{{route('insertUsuario')}}",
                     type: "POST",
                     cache: false,
                     data:{
                         _token:'{{ csrf_token() }}',
-                        nombre: $("#nombre").val(),
-                        apellidos: $("#apellidos").val(),
-                        dni: $("#dni").val(),
-                        sexo: $("#id_label_single_sexo").val(),
-                        email: $("#email").val(),
-                        telefono: $("#telefono").val(),
-                        fechaNac: $("#fechaNac").val(),
-                        usersname: $("#usersname").val(),
-                        //password: $("#password").val(),
-                        role_id: $("#id_label_rol-usuario").val(),
-                        gimnasio_id: $('select[name="duallistbox_gimnasio[]"]').val(),
-                        //manra de coger el dato selected del modal de insert
+                        nombre: $('#nombre').val(),
+                        apellidos: $('#apellidos').val(),
+                        dni: $('#dni').val(),
+                        ciudad: $('#ciudad').val(),
+                        localidad: $('#localidad').val(),
+                        codigo_postal: $('#codigo_postal').val(),
+                        direccion: $('#direccion').val(),
+                        sexo: $('#id_label_single_sexo').val(),
+                        email: $('#email').val(),
+                        telefono: $('#telefono').val(),
+                        fechaNac: $('#fechaNac').val(),
+                        role_id: $("#id_label_rol_usuario").val(),
+                        id_empresa: $("#id_label_empresa_usuario").val(),
+                        id_puesto_trabajo: $("#id_label_puestos_trabajo_usuario").val(),
 
                     },
                     success: function(dataResult){
-                        //console.log(dataResult)
+                        console.log(dataResult)
                         if(dataResult["code"]==200){
                             msgSuccess(dataResult["msg"])
                             $('#insertDataButtonClose').click();
@@ -553,19 +606,16 @@
                         msgError("Error genérico. Por favor, inténtelo más tarde.")
                     }
 
-                    /*$("#element").bootstrapDualListbox({
-
-                    });*/
                 });
             } else {
-                msgError("No se puede completar el registro por ser menor de edad")
+                msgError("No se puede completar el registro por ser menor de edad.")
             }
 
         }); 
 
         //updatedata
         $("#updateDataButton").click(function(e){
-            // Suponiendo que tu formulario tenga el ID 'miFormulario':
+            // Suponiendo que tu formulario tenga el ID 'updateForm':
             var formulario = $('#updateForm');
 
             // Validación de campos requeridos
@@ -585,7 +635,7 @@
                 return;
             }
             $.ajax({
-                url: "{{route('updateUsuarios')}}",
+                url: "{{route('updateUsuario')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -656,35 +706,35 @@
 
 
 
-    let obtenerEdad = (dia, mes, ano) => {
-        //let evento = new Date(2018, 1, 14);
-        let evento = new Date();
-        let eventoAno = evento.getFullYear();
-        let eventoMes = evento.getMonth() + 1;
-        let eventoDia = evento.getDate();
+        let obtenerEdad = (dia, mes, ano) => {
+            //let evento = new Date(2018, 1, 14);
+            let evento = new Date();
+            let eventoAno = evento.getFullYear();
+            let eventoMes = evento.getMonth() + 1;
+            let eventoDia = evento.getDate();
 
-        let edad = eventoAno - ano;
+            let edad = eventoAno - ano;
 
-        if (eventoAno - ano < 18) {
-            //
-        } else {
-            if (eventoMes < mes) {
-                edad--;
+            if (eventoAno - ano < 18) {
+                //
+            } else {
+                if (eventoMes < mes) {
+                    edad--;
+                }
+                if (mes == eventoMes && eventoDia < dia) {
+                    edad--;
+                }
             }
-            if (mes == eventoMes && eventoDia < dia) {
-                edad--;
+            return edad;
+        }
+
+        let esMayorEdad = (edad) => {
+            if (edad >= 18) {
+                return true;
+            } else {
+                return false;
             }
         }
-        return edad;
-    }
-
-    let esMayorEdad = (edad) => {
-        if (edad >= 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 
     });

@@ -30,6 +30,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
         
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+        
         <!-- Datatables-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
@@ -72,6 +73,10 @@
 
         <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css?v=3.2.0">
         <link rel="stylesheet" href="{{asset('css/template/main.css')}}">
+
+
+        <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-colorpicker.min.css')}}">
+
 
         <script>
 
@@ -252,6 +257,10 @@
 
         </script>
 
+
+        <script src="{{asset('js/bootstrap-colorpicker.min.js')}}"></script>
+
+
        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         
@@ -277,7 +286,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.js"></script>
 
-
+        
         <script>
             @if(Session('cambiarPass') == 1)
                 //console.log('Hola')

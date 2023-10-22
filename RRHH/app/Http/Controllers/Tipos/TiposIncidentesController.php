@@ -75,7 +75,7 @@ class TiposIncidentesController extends Controller
             return ["code"=>200, "msg"=>"Actualizado correctamente."];//500;
 
         }catch(\Illuminate\Database\QueryException $ex){ 
-            return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el usuario."];//500;
+            return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el tipo de incidente."];//500;
         }
         
     }

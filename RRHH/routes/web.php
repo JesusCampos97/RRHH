@@ -32,6 +32,17 @@ Route::post('/updateUsuario', [UsuariosController::class, 'updateUsuario'])->nam
 Route::post('/insertUsuario', [UsuariosController::class, 'insertUsuario'])->name('insertUsuario');
 Route::post('/activadesactivaUsuario', [UsuariosController::class, 'activadesactivaUsuario'])->name('activadesactivaUsuario');
 
+//Gestion tipos incidentes
+Route::get('/TiposIncidentes', [TiposIncidentesController::class, 'index'])->name('TiposIncidentes');
+Route::post('/listarTiposIncidentes', [TiposIncidentesController::class, 'listarTiposIncidentes'])->name('listarTiposIncidentes');
+Route::post('/getDataTiposIncidentes', [TiposIncidentesController::class, 'getDataTiposIncidentes'])->name('getDataTiposIncidentes');
+Route::post('/updateTiposIncidentes', [TiposIncidentesController::class, 'updateTiposIncidentes'])->name('updateTiposIncidentes');
+Route::post('/insertTiposIncidentes', [TiposIncidentesController::class, 'insertTiposIncidentes'])->name('insertTiposIncidentes');
+Route::post('/deleteTiposIncidentes', [TiposIncidentesController::class, 'deleteTiposIncidentes'])->name('deleteTiposIncidentes');
+
+Route::get('/jornada', [JornadasController::class, 'index'])->name('jornada');
+Route::post('/iniciarJornada', [JornadasController::class, 'iniciarJornada'])->name('iniciarJornada');
+Route::post('/finalizarJornada', [JornadasController::class, 'finalizarJornada'])->name('finalizarJornada');
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');
 

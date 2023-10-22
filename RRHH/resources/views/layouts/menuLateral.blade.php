@@ -33,14 +33,14 @@
 
 
                                 <li 
-                                    @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') )
+                                    @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') ||  (session('active')=='TiposEpis') )
                                         class="nav-item menu-is-opening menu-open"
                                     @else
                                         class="nav-item"
                                     @endif
                                     >
                                             <a href="#" 
-                                                @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') )
+                                                @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') ||  (session('active')=='TiposEpis') )
                                                     class="nav-link active"
                                                 @else
                                                     class="nav-link"
@@ -82,6 +82,20 @@
                                                         <p>Tipos de Descansos</p>
                                                     </a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a href="{{route('TiposEpis')}}" 
+                                                    
+                                                    @if(session('active')=='TiposEpis')
+                                                        class="nav-link active"
+                                                    @else
+                                                        class="nav-link"
+                                                    @endif
+                                                    >
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos de Epis</p>
+                                                    </a>
+                                                </li>
+     
      
                                             </ul>
                                 </li>                                        

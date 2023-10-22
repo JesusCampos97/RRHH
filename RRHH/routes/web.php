@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\Tipos\TiposIncidentesController;
 use App\Http\Controllers\Tipos\TiposDescansosController;
+use App\Http\Controllers\Tipos\TiposEpisController;
 
 use App\Http\Controllers\JornadasController;
 
@@ -49,9 +50,20 @@ Route::post('/updateTiposDescansos', [TiposDescansosController::class, 'updateTi
 Route::post('/insertTiposDescansos', [TiposDescansosController::class, 'insertTiposDescansos'])->name('insertTiposDescansos');
 Route::post('/deleteTiposDescansos', [TiposDescansosController::class, 'deleteTiposDescansos'])->name('deleteTiposDescansos');
 
+//jornada
 Route::get('/jornada', [JornadasController::class, 'index'])->name('jornada');
 Route::post('/iniciarJornada', [JornadasController::class, 'iniciarJornada'])->name('iniciarJornada');
 Route::post('/finalizarJornada', [JornadasController::class, 'finalizarJornada'])->name('finalizarJornada');
+
+
+//Gestion tipos epi
+Route::get('/TiposEpis', [TiposEpisController::class, 'index'])->name('TiposEpis');
+Route::post('/listarTiposEpis', [TiposEpisController::class, 'listarTiposEpis'])->name('listarTiposEpis');
+Route::post('/getDataTiposEpis', [TiposEpisController::class, 'getDataTiposEpis'])->name('getDataTiposEpis');
+Route::post('/updateTiposEpis', [TiposEpisController::class, 'updateTiposEpis'])->name('updateTiposEpis');
+Route::post('/insertTiposEpis', [TiposEpisController::class, 'insertTiposEpis'])->name('insertTiposEpis');
+Route::post('/deleteTiposEpis', [TiposEpisController::class, 'deleteTiposEpis'])->name('deleteTiposEpis');
+
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');
 

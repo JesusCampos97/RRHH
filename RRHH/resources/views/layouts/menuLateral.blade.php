@@ -33,14 +33,14 @@
 
 
                                 <li 
-                                    @if( session('active')=='TiposIncidentes' )
+                                    @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') )
                                         class="nav-item menu-is-opening menu-open"
                                     @else
                                         class="nav-item"
                                     @endif
                                     >
                                             <a href="#" 
-                                                @if( session('active')=='TiposIncidentes'  )
+                                                @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') )
                                                     class="nav-link active"
                                                 @else
                                                     class="nav-link"
@@ -66,6 +66,20 @@
                                                     >
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Tipos de Incidentes</p>
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a href="{{route('TiposDescansos')}}" 
+                                                    
+                                                    @if(session('active')=='TiposDescansos')
+                                                        class="nav-link active"
+                                                    @else
+                                                        class="nav-link"
+                                                    @endif
+                                                    >
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos de Descansos</p>
                                                     </a>
                                                 </li>
      

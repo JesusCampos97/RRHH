@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\Tipos\TiposIncidentesController;
+use App\Http\Controllers\Tipos\TiposDescansosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,14 @@ Route::post('/getDataTiposIncidentes', [TiposIncidentesController::class, 'getDa
 Route::post('/updateTiposIncidentes', [TiposIncidentesController::class, 'updateTiposIncidentes'])->name('updateTiposIncidentes');
 Route::post('/insertTiposIncidentes', [TiposIncidentesController::class, 'insertTiposIncidentes'])->name('insertTiposIncidentes');
 Route::post('/deleteTiposIncidentes', [TiposIncidentesController::class, 'deleteTiposIncidentes'])->name('deleteTiposIncidentes');
+
+//Gestion tipos descansos
+Route::get('/TiposDescansos', [TiposDescansosController::class, 'index'])->name('TiposDescansos');
+Route::post('/listarTiposDescansos', [TiposDescansosController::class, 'listarTiposDescansos'])->name('listarTiposDescansos');
+Route::post('/getDataTiposDescansos', [TiposDescansosController::class, 'getDataTiposDescansos'])->name('getDataTiposDescansos');
+Route::post('/updateTiposDescansos', [TiposDescansosController::class, 'updateTiposDescansos'])->name('updateTiposDescansos');
+Route::post('/insertTiposDescansos', [TiposDescansosController::class, 'insertTiposDescansos'])->name('insertTiposDescansos');
+Route::post('/deleteTiposDescansos', [TiposDescansosController::class, 'deleteTiposDescansos'])->name('deleteTiposDescansos');
 
 
 

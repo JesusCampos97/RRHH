@@ -50,9 +50,9 @@ class TiposEpisController extends Controller
         $id=$request->id;
         try
         { 
-            $sql="SELECT ti.id,nombre
-            FROM `tipo_epis` as ti 
-            where ti.id=".$id;
+            $sql="SELECT te.id,nombre
+            FROM `tipo_epis` as te 
+            where te.id=".$id;
             $tipo_epis = $this->executeSelect($sql);
             return json_encode($tipo_epis);
 

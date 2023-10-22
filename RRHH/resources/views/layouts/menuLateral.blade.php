@@ -30,8 +30,47 @@
                                         </p>
                                     </a>
                                 </li>
-                                        
 
+
+                                <li 
+                                    @if( session('active')=='TiposIncidentes' )
+                                        class="nav-item menu-is-opening menu-open"
+                                    @else
+                                        class="nav-item"
+                                    @endif
+                                    >
+                                            <a href="#" 
+                                                @if( session('active')=='TiposIncidentes'  )
+                                                    class="nav-link active"
+                                                @else
+                                                    class="nav-link"
+                                                @endif
+                                            >
+                                                <i class="nav-icon fa-solid fa-person-walking"></i>
+                                                <p>
+                                                    Tipos
+                                                <i class="fas fa-angle-left right"></i>
+                                                <!-- <span class="badge badge-info right">6</span>-->
+                                                </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                           
+                                                <li class="nav-item">
+                                                    <a href="{{route('TiposIncidentes')}}" 
+                                                    
+                                                    @if(session('active')=='TiposIncidentes')
+                                                        class="nav-link active"
+                                                    @else
+                                                        class="nav-link"
+                                                    @endif
+                                                    >
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos de Incidentes</p>
+                                                    </a>
+                                                </li>
+     
+                                            </ul>
+                                </li>                                        
 
                             </ul>
                         </nav>

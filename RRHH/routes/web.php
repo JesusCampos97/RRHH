@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\Tipos\TiposIncidentesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,16 @@ Route::post('/getDataUsuarios', [UsuariosController::class, 'getDataUsuarios'])-
 Route::post('/updateUsuario', [UsuariosController::class, 'updateUsuario'])->name('updateUsuario');
 Route::post('/insertUsuario', [UsuariosController::class, 'insertUsuario'])->name('insertUsuario');
 Route::post('/activadesactivaUsuario', [UsuariosController::class, 'activadesactivaUsuario'])->name('activadesactivaUsuario');
+
+
+//Gestion tipos incidentes
+Route::get('/TiposIncidentes', [TiposIncidentesController::class, 'index'])->name('TiposIncidentes');
+Route::post('/listarTiposIncidentes', [TiposIncidentesController::class, 'listarTiposIncidentes'])->name('listarTiposIncidentes');
+Route::post('/getDataTiposIncidentes', [TiposIncidentesController::class, 'getDataTiposIncidentes'])->name('getDataTiposIncidentes');
+Route::post('/updateTiposIncidentes', [TiposIncidentesController::class, 'updateTiposIncidentes'])->name('updateTiposIncidentes');
+Route::post('/insertTiposIncidentes', [TiposIncidentesController::class, 'insertTiposIncidentes'])->name('insertTiposIncidentes');
+Route::post('/deleteTiposIncidentes', [TiposIncidentesController::class, 'deleteTiposIncidentes'])->name('deleteTiposIncidentes');
+
 
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');

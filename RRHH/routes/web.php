@@ -6,6 +6,8 @@ use App\Http\Controllers\Tipos\TiposIncidentesController;
 use App\Http\Controllers\Tipos\TiposDescansosController;
 use App\Http\Controllers\Tipos\TiposEpisController;
 use App\Http\Controllers\Tipos\TiposAusenciaController;
+use App\Http\Controllers\Tipos\TiposEventosController;
+
 
 use App\Http\Controllers\JornadasController;
 
@@ -73,6 +75,15 @@ Route::post('/getDataTiposAusencias', [TiposAusenciaController::class, 'getDataT
 Route::post('/updateTiposAusencias', [TiposAusenciaController::class, 'updateTiposAusencias'])->name('updateTiposAusencias');
 Route::post('/insertTiposAusencias', [TiposAusenciaController::class, 'insertTiposAusencias'])->name('insertTiposAusencias');
 Route::post('/deleteTiposAusencias', [TiposAusenciaController::class, 'deleteTiposAusencias'])->name('deleteTiposAusencias');
+
+
+//Gestion tipos eventos
+Route::get('/TiposEventos', [TiposEventosController::class, 'index'])->name('TiposEventos');
+Route::post('/listarTiposEventos', [TiposEventosController::class, 'listarTiposEventos'])->name('listarTiposEventos');
+Route::post('/getDataTiposEventos', [TiposEventosController::class, 'getDataTiposEventos'])->name('getDataTiposEventos');
+Route::post('/updateTiposEventos', [TiposEventosController::class, 'updateTiposEventos'])->name('updateTiposEventos');
+Route::post('/insertTiposEventos', [TiposEventosController::class, 'insertTiposEventos'])->name('insertTiposEventos');
+Route::post('/deleteTiposEventos', [TiposEventosController::class, 'deleteTiposEventos'])->name('deleteTiposEventos');
 
 
 //Route::get('/superadmin', [SuperAdminController::class, 'index'])->name('superadmin');

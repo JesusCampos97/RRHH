@@ -576,9 +576,17 @@
         var data = null
         $('#table_id tbody').on('click', 'tr', function () {
             data = datatable.row(this).data();
+            if(data==undefined)
+            {
+                var tr = $(this.closest('tr'));
+                if(tr.hasClass('child')){
+                    tr = tr.prev();
+                }
+                data = datatable.row(tr).data();
+            }
             datatable.row(this).index
             //console.log( datatable.row(this).hasClass('testCVs'));
-             //console.log(data)
+
             //alert('You clicked on ' + data["id"] + "'s row");
             $.ajax({
                 url: "{{route('getDataUsuarios')}}",
@@ -598,7 +606,7 @@
                     document.getElementById('apellidosEditar').value=dataJson[0]["apellidos"];
                     document.getElementById('dniEditar').value=dataJson[0]["DNI"];
                     //document.getElementById('sexoEditar').value=dataJson[0]["sexo"];
-                    $("#id_label_single_sexo_update").val(dataJson[0]["sexo"])                   
+                    $("#id_label_single_sexo_update").val(dataJson[0]["sexo"])
                     document.getElementById('emailEditar').value=dataJson[0]["email"];
                     document.getElementById('telefonoEditar').value=dataJson[0]["telefono"];
                     document.getElementById('fechaNacEditar').value=dataJson[0]["fechaNac"];

@@ -57,7 +57,8 @@ Route::post('/deleteTiposDescansos', [TiposDescansosController::class, 'deleteTi
 Route::get('/jornada', [JornadasController::class, 'index'])->name('jornada');
 Route::post('/iniciarJornada', [JornadasController::class, 'iniciarJornada'])->name('iniciarJornada');
 Route::post('/finalizarJornada', [JornadasController::class, 'finalizarJornada'])->name('finalizarJornada');
-
+Route::post('/insertDescansoJornada', [JornadasController::class, 'insertDescansoJornada'])->name('insertDescansoJornada');
+Route::post('/finalizarDescanso', [JornadasController::class, 'finalizarDescanso'])->name('finalizarDescanso');
 
 //Gestion tipos epi
 Route::get('/TiposEpis', [TiposEpisController::class, 'index'])->name('TiposEpis');

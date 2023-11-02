@@ -245,6 +245,14 @@
         $('#table_id tbody').on('click', 'tr', function () {
             data = datatable.row(this).data();
             datatable.row(this).index
+            if(data==undefined)
+            {
+                var tr = $(this.closest('tr'));
+                if(tr.hasClass('child')){
+                    tr = tr.prev();
+                }
+                data = datatable.row(tr).data();
+            }
             //console.log( datatable.row(this).hasClass('testCVs'));
              //console.log(data)
             //alert('You clicked on ' + data["id"] + "'s row");

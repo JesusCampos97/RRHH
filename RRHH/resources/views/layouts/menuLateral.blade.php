@@ -35,7 +35,8 @@
                                 <li 
                                     @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos')
                                      ||  (session('active')=='TiposEpis') ||  (session('active')=='TiposAusencias')
-                                     ||  (session('active')=='TiposEventos'))
+                                     ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos'))  
+                                     
                                         class="nav-item menu-is-opening menu-open"
                                     @else
                                         class="nav-item"
@@ -44,7 +45,7 @@
                                             <a href="#" 
                                                 @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') 
                                                 ||  (session('active')=='TiposEpis')  ||  (session('active')=='TiposAusencias') 
-                                                ||  (session('active')=='TiposEventos'))
+                                                ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos'))
                                                     class="nav-link active"
                                                 @else
                                                     class="nav-link"
@@ -123,6 +124,19 @@
                                                     >
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Tipos de Eventos</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="{{route('TiposAvisos')}}" 
+                                                    
+                                                    @if(session('active')=='TiposAvisos')
+                                                        class="nav-link active"
+                                                    @else
+                                                        class="nav-link"
+                                                    @endif
+                                                    >
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos de Avisos</p>
                                                     </a>
                                                 </li>
      

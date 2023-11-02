@@ -8,13 +8,13 @@
 
             <div class="card mt-2">
                 <div class="card-header">
-                    <h3 class="card-title">Listado de Tipos de Incidentes</h3>
+                    <h3 class="card-title">Listado de Tipos de Avisos</h3>
                 </div>
 
                 <div class="card-body">
 
                     <div class="tab-content" id="custom-content-below-tabContent">
-                        <div class="tab-pane fade active show" id="tab-tipos-incidentes-tab" role="tabpanel" aria-labelledby="tab-tipos-incidentes">
+                        <div class="tab-pane fade active show" id="tab-tipos-avisos-tab" role="tabpanel" aria-labelledby="tab-avisos-ausencias">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -54,7 +54,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" style="min-width: 650px">
             <div class="modal-header">
-            <h1>Añadir Tipo de Incidente</h1>
+            <h1>Añadir Tipo de Aviso</h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -62,14 +62,32 @@
              
             <div class="modal-body" style=" margin-top: -2em;">
                 
-                <form action="" method="POST" name="createTipoIncidente" id="createTipoIncidente">
+                <form action="" method="POST" name="createTipoAviso" id="createTipoAviso">
                     @csrf
                     <hr>
                     <div class="card-body" style="padding: 0;">
                         <div class="form-group">
                             <label style="font-size:13px" for="nombre"><b>Nombre*</b></label>
                             <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombre" required>
-                        </div>             
+                        </div> 
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"  id="flexCheckUrgente" style="
+                                margin-left: -1.25em;
+                                margin-top: 0.25em;
+                            "  value="0" onclick="cambiarValor()">
+                                <label class="form-check-label" for="flexCheckUrgente">¿Es urgente?</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="flexCheckWhatsApp" style="
+                                margin-left: -1.25em;
+                                margin-top: 0.25em;
+                            "  value="0" onclick="cambiarValor()">
+                                <label class="form-check-label" for="flexCheckWhatsApp">¿Usar WhatsApp para realizar avisos?</label>
+                            </div> 
+                        </div>         
                    </div>
                    <hr>
                     <div class="card-footer" style="background-color: white; padding: 0;">
@@ -89,7 +107,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content"  style="min-width: 650px">
         <div class="modal-header">
-        <h1>Actualizar Tipo de Incidente</h1>
+        <h1>Actualizar Tipo de Ausencia</h1>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -103,6 +121,21 @@
                     <div class="form-group">
                         <label style="font-size:13px" for="nombre"><b>Nombre*</b></label>
                         <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombreEditar" required>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckUrgenteEditar" style="
+                        margin-left: -1.25em;
+                        margin-top: 0.25em;
+                    " value="0" onclick="cambiarValor()">
+                        <label class="form-check-label" for="flexCheckUrgenteEditar">¿Es Urgente?</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckWhatsAppEditar" style="
+                        margin-left: -1.25em;
+                        margin-top: 0.25em;
+                    " value="0" onclick="cambiarValor()">
+                        <label class="form-check-label" for="flexCheckWhatsAppEditar">¿Usar WhatsApp para realizar avisos?</label>
                     </div>
                </div>
 
@@ -129,7 +162,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h1>Eliminar Tipo de Incidente</h1>
+            <h1>Eliminar Tipo de Ausencia</h1>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -169,9 +202,34 @@
 
 <script>
 
+
+    function cambiarValor(){
+           if( document.getElementById("flexCheckUrgente").checked){
+                document.getElementById("flexCheckUrgente").value=1;
+
+           }else if ( document.getElementById("flexCheckWhatsApp").checked){
+                document.getElementById("flexCheckWhatsApp").value=1;
+
+           }else{
+                document.getElementById("flexCheckUrgente").value=0;
+                document.getElementById("flexCheckWhatsApp").value=0;
+           }
+
+           if( document.getElementById("flexCheckUrgenteEditar").checked){
+                document.getElementById("flexCheckUrgenteEditar").value=1;
+
+           }else if (document.getElementById("flexCheckWhatsAppEditar").checked){
+                document.getElementById("flexCheckWhatsAppEditar").value=1;
+
+           }else{
+                document.getElementById("flexCheckUrgenteEditar").value=0;
+                document.getElementById("flexCheckWhatsAppEditar").value=0;
+           }
+    }
+
     $(document).ready( function () {
         
-
+ 
         //selectdata
 
         var datatable = $('#table_id').DataTable({
@@ -179,7 +237,7 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },
             ajax: {
-                url: "{{route('listarTiposIncidentes')}}",
+                url: "{{route('listarTiposAvisos')}}",
                 type: 'post',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr("content"),
@@ -188,7 +246,7 @@
                                        
             },
             responsive: true,
-            columns: [{ data: "nombre", title: "Nombre" }],
+            columns: [{ data: "nombre", title: "Nombre" }, { data: "urgente", title: "¿Es Urgente?" }, { data: "usa_whatsapp_avisos", title: "¿Usa WhatsApp?" }],
         });
 
         
@@ -228,7 +286,7 @@
              //console.log(data)
             //alert('You clicked on ' + data["id"] + "'s row");
             $.ajax({
-                url: "{{route('getDataTiposIncidentes')}}",
+                url: "{{route('getDataTiposAvisos')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -242,6 +300,8 @@
                     //console.log(dataResult[1])
                     dataJson=JSON.parse(dataResult)
                     document.getElementById('nombreEditar').value=dataJson[0]["nombre"];
+                    document.getElementById('flexCheckUrgenteEditar').checked=dataJson[0]["urgente"];
+                    document.getElementById('flexCheckWhatsAppEditar').checked=dataJson[0]["usa_whatsapp_avisos"];
 
                     $('#updateModal').modal('show');        
                 },
@@ -254,7 +314,7 @@
         //deletedata
         $("#DeleteDataButton").click(function(){
             $.ajax({
-                url: "{{route('deleteTiposIncidentes')}}",
+                url: "{{route('deleteTiposAvisos')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -288,7 +348,7 @@
         
         //insertdata
         $("#insertDataButton").click(function(e){
-            var formulario = $('#createTipoIncidente');
+            var formulario = $('#createTipoAviso');
 
             // Validación de campos requeridos
             var todosLosCamposSonValidos = true;
@@ -308,12 +368,16 @@
             }
                 
                 $.ajax({
-                    url: "{{route('insertTiposIncidentes')}}",
+                    url: "{{route('insertTiposAvisos')}}",
                     type: "POST",
                     cache: false,
                     data:{
                         _token:'{{ csrf_token() }}',
                         nombre: $('#nombre').val(),
+                        urgente: $("#flexCheckUrgente").val(),
+                        usa_whatsapp_avisos: $("#flexCheckWhatsApp").val(),
+
+
                     },
                     success: function(dataResult){
                         console.log(dataResult)
@@ -357,12 +421,15 @@
                 return;
             }
             $.ajax({
-                url: "{{route('updateTiposIncidentes')}}",
+                url: "{{route('updateTiposAvisos')}}",
                 type: "POST",
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}',
-                    nombre: $('#nombreEditar').val(),                    
+                    nombre: $('#nombreEditar').val(),  
+                    urgente:  $('#flexCheckUrgenteEditar').val(),
+                    usa_whatsapp_avisos:  $('#flexCheckWhatsAppEditar').val(),
+
                     id: data["id"]
                 },
 
@@ -404,11 +471,6 @@
                 timer: 0
             });*/
         @endif
-
-
-
-      
-
 
     });
 

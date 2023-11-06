@@ -32,10 +32,10 @@ class TiposEpisController extends Controller
 
     public function listarTiposEpis(Request $request){
 
-        //$activo=$request->activo;
+        $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_epis";
+            $sql="select * from tipo_epis where activo='".$activo."';";
             $tipo_epis = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipo_epis
@@ -70,13 +70,13 @@ class TiposEpisController extends Controller
             WHERE ID=".$id;
             $tipo_episUpdated = $this->executeUpdate($sql);
             if(!$tipo_episUpdated) {
-                return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el tipo de epi."];
+                return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el tipo de epis."];
             }
 
             return ["code"=>200, "msg"=>"Actualizado correctamente."];//500;
 
         }catch(\Illuminate\Database\QueryException $ex){ 
-            return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el tipo de epi."];//500;
+            return ["code"=>500, "msg"=>"Se ha producido un error al actualizar el tipo de epis."];//500;
         }
         
     }
@@ -92,21 +92,21 @@ class TiposEpisController extends Controller
             $tipo_episInsertedId = $this->executeInsert($sql);
 
             if($tipo_episInsertedId===false){
-                return ["code"=>500, "msg"=>"Se ha producido un error al insertar el tipo de epi."];
+                return ["code"=>500, "msg"=>"Se ha producido un error al insertar el tipo de epis."];
             } 
 
             return ["code"=>200, "msg"=>"Tipo de epi añadido correctamente."];//500;
 
         }catch(\Illuminate\Database\QueryException $ex){ 
-            return ["code"=>500, "msg"=>"Se ha producido un error al insertar el tipo de epi.".$ex->getMessage()];//500;
+            return ["code"=>500, "msg"=>"Se ha producido un error al insertar el tipo de epis.".$ex->getMessage()];//500;
         }
         
     }
     
 
-    public function deleteTiposEpis(Request $request){
+    public function activadesactivaTiposEpis(Request $request){
 
-        $id=$request->id;
+       /* $id=$request->id;
         //$nombre = $request->nombre;
 
         try
@@ -120,6 +120,23 @@ class TiposEpisController extends Controller
            
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al eliminar el tipo de epi."];//500;
+        }*/
+
+        $id=$request->id;
+        $activo=$request->activo;
+        try
+        { 
+            $sql="UPDATE tipo_epis SET activo=".$activo." where id=".$id;
+            $tipo_episUpdated = $this->executeUpdate($sql);
+            if(!$tipo_episUpdated) return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de epis."];
+
+            if($activo==0){
+                return ["code"=>200, "msg"=>"El tipo de epis se ha marcado como inactivo."];//500;
+            }else{
+                return ["code"=>200, "msg"=>"El tipo de epis se ha marcado como activo."];//500;
+            }
+        }catch(\Illuminate\Database\QueryException $ex){ 
+            return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de epis."];//500;
         }
 
     }

@@ -44,7 +44,7 @@ Route::post('/listarTiposIncidentes', [TiposIncidentesController::class, 'listar
 Route::post('/getDataTiposIncidentes', [TiposIncidentesController::class, 'getDataTiposIncidentes'])->name('getDataTiposIncidentes');
 Route::post('/updateTiposIncidentes', [TiposIncidentesController::class, 'updateTiposIncidentes'])->name('updateTiposIncidentes');
 Route::post('/insertTiposIncidentes', [TiposIncidentesController::class, 'insertTiposIncidentes'])->name('insertTiposIncidentes');
-Route::post('/deleteTiposIncidentes', [TiposIncidentesController::class, 'deleteTiposIncidentes'])->name('deleteTiposIncidentes');
+Route::post('/activadesactivaTiposIncidentes', [TiposIncidentesController::class, 'activadesactivaTiposIncidentes'])->name('activadesactivaTiposIncidentes');
 
 //Gestion tipos descansos
 Route::get('/TiposDescansos', [TiposDescansosController::class, 'index'])->name('TiposDescansos');
@@ -52,7 +52,7 @@ Route::post('/listarTiposDescansos', [TiposDescansosController::class, 'listarTi
 Route::post('/getDataTiposDescansos', [TiposDescansosController::class, 'getDataTiposDescansos'])->name('getDataTiposDescansos');
 Route::post('/updateTiposDescansos', [TiposDescansosController::class, 'updateTiposDescansos'])->name('updateTiposDescansos');
 Route::post('/insertTiposDescansos', [TiposDescansosController::class, 'insertTiposDescansos'])->name('insertTiposDescansos');
-Route::post('/deleteTiposDescansos', [TiposDescansosController::class, 'deleteTiposDescansos'])->name('deleteTiposDescansos');
+Route::post('/activadesactivaTiposDescansos', [TiposDescansosController::class, 'activadesactivaTiposDescansos'])->name('activadesactivaTiposDescansos');
 
 //jornada
 Route::get('/jornada', [JornadasController::class, 'index'])->name('jornada');
@@ -67,7 +67,7 @@ Route::post('/listarTiposEpis', [TiposEpisController::class, 'listarTiposEpis'])
 Route::post('/getDataTiposEpis', [TiposEpisController::class, 'getDataTiposEpis'])->name('getDataTiposEpis');
 Route::post('/updateTiposEpis', [TiposEpisController::class, 'updateTiposEpis'])->name('updateTiposEpis');
 Route::post('/insertTiposEpis', [TiposEpisController::class, 'insertTiposEpis'])->name('insertTiposEpis');
-Route::post('/deleteTiposEpis', [TiposEpisController::class, 'deleteTiposEpis'])->name('deleteTiposEpis');
+Route::post('/activadesactivaTiposEpis', [TiposEpisController::class, 'activadesactivaTiposEpis'])->name('activadesactivaTiposEpis');
 
 
 //Gestion tipos ausencia
@@ -76,7 +76,7 @@ Route::post('/listarTiposAusencias', [TiposAusenciaController::class, 'listarTip
 Route::post('/getDataTiposAusencias', [TiposAusenciaController::class, 'getDataTiposAusencias'])->name('getDataTiposAusencias');
 Route::post('/updateTiposAusencias', [TiposAusenciaController::class, 'updateTiposAusencias'])->name('updateTiposAusencias');
 Route::post('/insertTiposAusencias', [TiposAusenciaController::class, 'insertTiposAusencias'])->name('insertTiposAusencias');
-Route::post('/deleteTiposAusencias', [TiposAusenciaController::class, 'deleteTiposAusencias'])->name('deleteTiposAusencias');
+Route::post('/activadesactivaTiposAusencias', [TiposAusenciaController::class, 'activadesactivaTiposAusencias'])->name('activadesactivaTiposAusencias');
 
 
 //Gestion tipos eventos
@@ -85,7 +85,7 @@ Route::post('/listarTiposEventos', [TiposEventosController::class, 'listarTiposE
 Route::post('/getDataTiposEventos', [TiposEventosController::class, 'getDataTiposEventos'])->name('getDataTiposEventos');
 Route::post('/updateTiposEventos', [TiposEventosController::class, 'updateTiposEventos'])->name('updateTiposEventos');
 Route::post('/insertTiposEventos', [TiposEventosController::class, 'insertTiposEventos'])->name('insertTiposEventos');
-Route::post('/deleteTiposEventos', [TiposEventosController::class, 'deleteTiposEventos'])->name('deleteTiposEventos');
+Route::post('/activadesactivaTiposEventos', [TiposEventosController::class, 'activadesactivaTiposEventos'])->name('activadesactivaTiposEventos');
 
 
 //Gestion tipos avisos
@@ -94,7 +94,7 @@ Route::post('/listarTiposAvisos', [TiposAvisosController::class, 'listarTiposAvi
 Route::post('/getDataTiposAvisos', [TiposAvisosController::class, 'getDataTiposAvisos'])->name('getDataTiposAvisos');
 Route::post('/updateTiposAvisos', [TiposAvisosController::class, 'updateTiposAvisos'])->name('updateTiposAvisos');
 Route::post('/insertTiposAvisos', [TiposAvisosController::class, 'insertTiposAvisos'])->name('insertTiposAvisos');
-Route::post('/deleteTiposAvisos', [TiposAvisosController::class, 'deleteTiposAvisos'])->name('deleteTiposAvisos');
+Route::post('/activadesactivaTiposAvisos', [TiposAvisosController::class, 'activadesactivaTiposAvisos'])->name('activadesactivaTiposAvisos');
 
 
 

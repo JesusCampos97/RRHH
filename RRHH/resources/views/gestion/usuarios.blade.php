@@ -417,7 +417,7 @@
               
                 </div>
                <hr>
-                <div class="card-footer" style="background-color: white; padding: 0;">
+               <div class="card-footer" style="background-color: white; padding: 0;">
                     <button type="button"  class="btn btn-secondary float-left"  id="DeleteDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button"  id="DeleteDataButton" class="btn btn-primary float-right">Aceptar</button>
                 </div>

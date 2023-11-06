@@ -12,13 +12,31 @@
                 </div>
 
                 <div class="card-body">
-
+                    <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab-tipos-epis-activos" data-toggle="pill" href="#tab-tipo-epis-activos-tab" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Tipos de epis activos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab-tipos-epis-no-activos" data-toggle="pill" href="#tab-tipo-epis-no-activos-tab" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Tipos de epis no activos</a>
+                        </li>
+                    </ul>
                     <div class="tab-content" id="custom-content-below-tabContent">
-                        <div class="tab-pane fade active show" id="tab-tipos-epis-tab" role="tabpanel" aria-labelledby="tab-tipos-epis">
+                        <div class="tab-pane fade active show" id="tab-tipo-epis-activos-tab" role="tabpanel" aria-labelledby="tab-tipos-epis">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline"  cellspacing="0" width="100%" top="2em">
+                                            
+                                        </table> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-tipo-epis-no-activos-tab" role="tabpanel" aria-labelledby="tab-tipos-epis-no-activos">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="table_2" class="table table-bordered table-striped dataTable dtr-inline"  cellspacing="0" width="100%" top="2em">
                                             
                                         </table> 
                                     </div>
@@ -109,7 +127,7 @@
                 <hr>
                 <div class="card-footer" style="background-color: white; padding: 0;">
                                          
-                    <button type="button" class="btn btn-danger float-left"  id="" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</button>             
+                    <button type="button" class="btn btn-danger float-left"  id="" data-bs-toggle="modal" data-bs-target="#deleteModal">Marcar como inactivo</button>             
                     <button type="button"   id="updateDataButton" class="btn btn-primary float-right" >Aceptar</button>
                     <button type="button" class="btn btn-secondary float-right  mr-1"  id="UpdateDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
 
@@ -125,7 +143,7 @@
 
 
  <!-- Modal  Delete-->
- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -156,8 +174,76 @@
             </div>
         </div>
     </div>
+</div>-->
+
+<!-- Modal  Delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Desactivar Tipo de Epis</h1>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+        </div>
+        <div class="modal-body" style="margin-top:-2em">
+        
+            <form method="POST"> 
+                @csrf
+                <hr>
+                <div class="container" >
+                  <div class="form-group">
+                    <p>¿Deseas marcar como inactivo al tipo de epis?</p> 
+                  </div>                     
+              
+                </div>
+               <hr>
+                <div class="card-footer" style="background-color: white; padding: 0;">
+                    <button type="button"  class="btn btn-secondary float-left"  id="DeleteDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button"  id="DeleteDataButton" class="btn btn-primary float-right">Aceptar</button>
+                </div>
+              
+              </form>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Modal  Delete-->
+<div class="modal fade" id="updateModal_NoActivo" tabindex="-1" role="dialog" aria-labelledby="updateModal_NoActivo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Activar Tipo de Epis</h1>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+        </div>
+        <div class="modal-body" style="margin-top:-2em">
+        
+            <form method="POST"> 
+                @csrf
+                <hr>
+                <div class="container" >
+                  <div class="form-group">
+                    <p>¿Deseas volver a activar el tipo de epis?</p> 
+                  </div>                     
+              
+                </div>
+               <hr>
+               <div class="card-footer" style="background-color: white; padding: 0;">
+                    <button type="button"  class="btn btn-secondary float-left"  id="NoActivoButtonClose" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button"  id="NoActivoButton" class="btn btn-primary float-right">Aceptar</button>
+                </div>
+          
+              
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -183,7 +269,7 @@
                 type: 'post',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr("content"),
-                    //"activo": 1
+                    "activo": 1
                 },
                                        
             },
@@ -191,7 +277,22 @@
             columns: [{ data: "nombre", title: "Nombre" }],
         });
 
-        
+        var datatable2 = $('#table_2').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+            ajax: {
+                url: "{{route('listarTiposEpis')}}",
+                type: 'post',
+                data: {
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+                    "activo": 0
+                },
+                                       
+            },
+            responsive: true,
+            columns: [{ data: "nombre", title: "Nombre" }],
+        });
 
         //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
         $('#table_id tbody').on('click', 'td.dtr-control', function (e) {
@@ -211,6 +312,26 @@
                 e.stopPropagation();
             } 
         } );
+
+         //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
+         $('#table_2 tbody').on('click', 'td.dtr-control', function (e) {
+
+                //me cojo la row del td al que he dado click
+                var tr = $(this).closest('tr');
+                //cojo la row del datatable para ver si se ha mostrado
+                var row = datatable2.row(tr);
+
+                //de la row al que he dado click, comprueba si tiene la clase, 
+                //si es el casoes que no estaba abierto y paro la propagacion del modal
+                //o en el caso de que este ya abierto comprobamos con el datatable 
+                if (//tr.hasClass('dt-hasChild') || !row.child.isShown()
+                    //datatable te da una funcion que te dice si el responsive esta activado o no
+                    datatable2.responsive.hasHidden() ) {
+                    //no muestres el modal
+                    e.stopPropagation();
+                } 
+            } );
+
 
         var data = null
         $('#table_id tbody').on('click', 'tr', function () {
@@ -250,17 +371,58 @@
                 }
             });
         });
+
+        var data2 = null
+        $('#table_2 tbody').on('click', 'tr', function () {
+            data2 = datatable2.row(this).data();
+            datatable2.row(this).index
+            $('#updateModal_NoActivo').modal('show');        
+
+        });
   
+
+        //deletedata
+        $("#NoActivoButton").click(function(){
+            $.ajax({
+                url: "{{route('activadesactivaTiposEpis')}}",
+                type: "POST",
+                cache: false,
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    id: data2["id"],
+                    activo: 1
+
+                },
+                success: function(dataResult){
+                    //console.log(dataResult)
+
+                    if(dataResult["code"]==200){
+                        msgSuccess(dataResult["msg"])
+                        $('#NoActivoButtonClose').click();
+                        datatable.ajax.reload();
+                        datatable2.ajax.reload();
+                    }else{
+                        msgError(dataResult["msg"])
+                    }
+                  
+                },
+                error: function(e){
+                    console.log(e)
+                    msgError("Error genérico. Por favor, inténtelo más tarde.")
+                }
+            });
+    }); 
+
         //deletedata
         $("#DeleteDataButton").click(function(){
             $.ajax({
-                url: "{{route('deleteTiposEpis')}}",
+                url: "{{route('activadesactivaTiposEpis')}}",
                 type: "POST",
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}',
                     id: data["id"],
-                    //activo: 0
+                    activo: 0
 
                 },
                 success: function(dataResult){
@@ -284,6 +446,8 @@
                 }
             });
         }); 
+
+        
 
         
         //insertdata

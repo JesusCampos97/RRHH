@@ -31,10 +31,10 @@ class TiposEventosController extends Controller
 
     public function listarTiposEventos(Request $request){
 
-        //$activo=$request->activo;
+        $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_eventos";
+            $sql="select * from tipo_eventos where activo='".$activo."';";
             $tipo_eventos = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipo_eventos
@@ -106,9 +106,9 @@ class TiposEventosController extends Controller
     }
     
 
-    public function deleteTiposEventos(Request $request){
+    public function activadesactivaTiposEventos(Request $request){
 
-        $id=$request->id;
+       /* $id=$request->id;
         //$nombre = $request->nombre;
 
         try
@@ -122,7 +122,24 @@ class TiposEventosController extends Controller
            
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al eliminar el tipo de evento."];//500;
-        }
+        }*/
+        $id=$request->id;
+         $activo=$request->activo;
+         try
+         { 
+             $sql="UPDATE tipo_eventos SET activo=".$activo." where id=".$id;
+             $tipo_eventosUpdated = $this->executeUpdate($sql);
+             if(!$tipo_eventosUpdated) return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de evento."];
+ 
+             if($activo==0){
+                 return ["code"=>200, "msg"=>"El tipo de evento se ha marcado como inactivo."];//500;
+             }else{
+                 return ["code"=>200, "msg"=>"El tipo de evento se ha marcado como activo."];//500;
+             }
+         }catch(\Illuminate\Database\QueryException $ex){ 
+             return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de evento."];//500;
+         }
+
 
     }
 }

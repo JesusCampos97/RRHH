@@ -31,10 +31,10 @@ class TiposIncidentesController extends Controller
 
     public function listarTiposIncidentes(Request $request){
 
-        //$activo=$request->activo;
+        $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_incidentes";
+            $sql="select * from tipo_incidentes where activo='".$activo."';";
             $tipos_incidentes = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipos_incidentes
@@ -105,7 +105,7 @@ class TiposIncidentesController extends Controller
 
     public function deleteTiposIncidentes(Request $request){
 
-        $id=$request->id;
+        /*$id=$request->id;
         //$nombre = $request->nombre;
 
         try
@@ -119,6 +119,22 @@ class TiposIncidentesController extends Controller
            
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al eliminar el tipo de incidente."];//500;
+        }*/
+        $id=$request->id;
+        $activo=$request->activo;
+        try
+        { 
+            $sql="UPDATE tipo_incidentes SET activo=".$activo." where id=".$id;
+            $tipo_incidentesUpdated = $this->executeUpdate($sql);
+            if(!$tipo_incidentesUpdated) return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de incidente."];
+
+            if($activo==0){
+                return ["code"=>200, "msg"=>"El tipo de incidente se ha marcado como inactivo."];//500;
+            }else{
+                return ["code"=>200, "msg"=>"El tipo de incidente se ha marcado como activo."];//500;
+            }
+        }catch(\Illuminate\Database\QueryException $ex){ 
+            return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de incidente."];//500;
         }
 
     }

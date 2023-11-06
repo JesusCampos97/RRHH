@@ -31,10 +31,10 @@ class TiposDescansosController extends Controller
 
     public function listarTiposDescansos(Request $request){
 
-        //$activo=$request->activo;
+        $activo=$request->activo;
         try
         { 
-            $sql="select * from tipos_descansos";
+            $sql="select * from tipos_descansos where activo='".$activo."';";
             $tipos_descansos = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipos_descansos
@@ -106,9 +106,9 @@ class TiposDescansosController extends Controller
     }
     
 
-    public function deleteTiposDescansos(Request $request){
+    public function activadesactivaTiposDescansos(Request $request){
 
-        $id=$request->id;
+      /*  $id=$request->id;
         //$nombre = $request->nombre;
 
         try
@@ -122,7 +122,23 @@ class TiposDescansosController extends Controller
            
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al eliminar el tipo de descanso."];//500;
-        }
+        }*/
+        $id=$request->id;
+         $activo=$request->activo;
+         try
+         { 
+             $sql="UPDATE tipos_descansos SET activo=".$activo." where id=".$id;
+             $tipos_descansosUpdated = $this->executeUpdate($sql);
+             if(!$tipos_descansosUpdated) return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de descanso."];
+ 
+             if($activo==0){
+                 return ["code"=>200, "msg"=>"El tipo de descanso se ha marcado como inactivo."];//500;
+             }else{
+                 return ["code"=>200, "msg"=>"El tipo de descanso se ha marcado como activo."];//500;
+             }
+         }catch(\Illuminate\Database\QueryException $ex){ 
+             return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de descanso."];//500;
+         }
 
     }
 }

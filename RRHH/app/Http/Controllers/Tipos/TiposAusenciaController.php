@@ -30,14 +30,15 @@ class TiposAusenciaController extends Controller
 
     public function listarTiposAusencias(Request $request){
 
-        //$activo=$request->activo;
+        $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_ausencias";
+            $sql="select * from tipo_ausencias where activo='".$activo."';";
             $tipo_ausencias = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipo_ausencias
             );
+
             echo json_encode($data);
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al mostrar los tipos de ausencias"];//500;
@@ -105,9 +106,9 @@ class TiposAusenciaController extends Controller
     }
     
 
-    public function deleteTiposAusencias(Request $request){
+    public function activadesactivaTiposAusencias(Request $request){
 
-        $id=$request->id;
+       /* $id=$request->id;
         //$nombre = $request->nombre;
 
         try
@@ -121,7 +122,25 @@ class TiposAusenciaController extends Controller
            
         }catch(\Illuminate\Database\QueryException $ex){ 
             return ["code"=>500, "msg"=>"Se ha producido un error al eliminar el tipo de ausencia."];//500;
-        }
+        }*/
+
+         //LOS TIPOS DE AUSENCIAS NO LOS BORRAMOS DE LA BASE DE DATOS, LO PONEMOS COMO ACTIVO=0, POR QUE DEPENDEN MUCHAS TABLAS DE EL
+         $id=$request->id;
+         $activo=$request->activo;
+         try
+         { 
+             $sql="UPDATE tipo_ausencias SET activo=".$activo." where id=".$id;
+             $tipo_ausenciasUpdated = $this->executeUpdate($sql);
+             if(!$tipo_ausenciasUpdated) return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de ausencias."];
+ 
+             if($activo==0){
+                 return ["code"=>200, "msg"=>"El tipo de ausencias se ha marcado como inactivo."];//500;
+             }else{
+                 return ["code"=>200, "msg"=>"El tipo de ausencias se ha marcado como activo."];//500;
+             }
+         }catch(\Illuminate\Database\QueryException $ex){ 
+             return ["code"=>500, "msg"=>"Se ha producido un error al marcar como inactivo al tipo de ausencias."];//500;
+         }
 
     }
 }

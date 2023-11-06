@@ -8,6 +8,7 @@ use App\Http\Controllers\Tipos\TiposEpisController;
 use App\Http\Controllers\Tipos\TiposAusenciaController;
 use App\Http\Controllers\Tipos\TiposEventosController;
 use App\Http\Controllers\Tipos\TiposAvisosController;
+use App\Http\Controllers\Tipos\TiposDocumentosController;
 
 
 use App\Http\Controllers\JornadasController;
@@ -95,6 +96,15 @@ Route::post('/getDataTiposAvisos', [TiposAvisosController::class, 'getDataTiposA
 Route::post('/updateTiposAvisos', [TiposAvisosController::class, 'updateTiposAvisos'])->name('updateTiposAvisos');
 Route::post('/insertTiposAvisos', [TiposAvisosController::class, 'insertTiposAvisos'])->name('insertTiposAvisos');
 Route::post('/activadesactivaTiposAvisos', [TiposAvisosController::class, 'activadesactivaTiposAvisos'])->name('activadesactivaTiposAvisos');
+
+
+//Gestion tipos documentos
+Route::get('/TiposDocumentos', [TiposDocumentosController::class, 'index'])->name('TiposDocumentos');
+Route::post('/listarTiposDocumentos', [TiposDocumentosController::class, 'listarTiposDocumentos'])->name('listarTiposDocumentos');
+Route::post('/getDataTiposDocumentos', [TiposDocumentosController::class, 'getDataTiposDocumentos'])->name('getDataTiposDocumentos');
+Route::post('/updateTiposDocumentos', [TiposDocumentosController::class, 'updateTiposDocumentos'])->name('updateTiposDocumentos');
+Route::post('/insertTiposDocumentos', [TiposDocumentosController::class, 'insertTiposDocumentos'])->name('insertTiposDocumentos');
+Route::post('/activadesactivaTiposDocumentos', [TiposDocumentosController::class, 'activadesactivaTiposDocumentos'])->name('activadesactivaTiposDocumentos');
 
 
 

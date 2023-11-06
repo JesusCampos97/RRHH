@@ -35,8 +35,11 @@
                                 <li 
                                     @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos')
                                      ||  (session('active')=='TiposEpis') ||  (session('active')=='TiposAusencias')
-                                     ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos'))  
+                                     ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos')
+                                     ||  (session('active')=='TiposDocumentos'))  
                                      
+
+                                     TiposDocumentos
                                         class="nav-item menu-is-opening menu-open"
                                     @else
                                         class="nav-item"
@@ -45,7 +48,8 @@
                                             <a href="#" 
                                                 @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos') 
                                                 ||  (session('active')=='TiposEpis')  ||  (session('active')=='TiposAusencias') 
-                                                ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos'))
+                                                ||  (session('active')=='TiposEventos') ||  (session('active')=='TiposAvisos')
+                                                ||  (session('active')=='TiposDocumentos'))
                                                     class="nav-link active"
                                                 @else
                                                     class="nav-link"
@@ -140,7 +144,19 @@
                                                     </a>
                                                 </li>
      
-     
+                                                <li class="nav-item">
+                                                    <a href="{{route('TiposDocumentos')}}" 
+                                                    
+                                                    @if(session('active')=='TiposDocumentos')
+                                                        class="nav-link active"
+                                                    @else
+                                                        class="nav-link"
+                                                    @endif
+                                                    >
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos de Documentos</p>
+                                                    </a>
+                                                </li>
                                             </ul>
                                 </li>                                        
 

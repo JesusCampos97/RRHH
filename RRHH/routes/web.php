@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\RolesController;
+
 use App\Http\Controllers\Tipos\TiposIncidentesController;
 use App\Http\Controllers\Tipos\TiposDescansosController;
 use App\Http\Controllers\Tipos\TiposEpisController;
@@ -106,6 +108,13 @@ Route::post('/updateTiposDocumentos', [TiposDocumentosController::class, 'update
 Route::post('/insertTiposDocumentos', [TiposDocumentosController::class, 'insertTiposDocumentos'])->name('insertTiposDocumentos');
 Route::post('/activadesactivaTiposDocumentos', [TiposDocumentosController::class, 'activadesactivaTiposDocumentos'])->name('activadesactivaTiposDocumentos');
 
+//Gestion roles
+Route::get('/Roles', [RolesController::class, 'index'])->name('Roles');
+Route::post('/listarRoles', [RolesController::class, 'listarRoles'])->name('listarRoles');
+Route::post('/getDataRoles', [RolesController::class, 'getDataRoles'])->name('getDataRoles');
+Route::post('/updateRoles', [RolesController::class, 'updateRoles'])->name('updateRoles');
+Route::post('/insertRoles', [RolesController::class, 'insertRoles'])->name('insertRoles');
+Route::post('/activadesactivaRoles', [RolesController::class, 'activadesactivaRoles'])->name('activadesactivaRoles');
 
 
 

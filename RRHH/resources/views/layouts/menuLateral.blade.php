@@ -31,6 +31,15 @@
                                     </a>
                                 </li>
 
+                                <li class="nav-item">
+                                    <a href="{{route('Roles')}}" class="{{ (request()->is('admin/cities')) ? 'nav-link active' : 'nav-link' }} ">
+                                        <i class="nav-icon fa-solid fa-user"></i>
+                                        <p>
+                                            Roles
+                                        </p>
+                                    </a>
+                                </li>
+
 
                                 <li 
                                     @if( (session('active')=='TiposIncidentes') ||  (session('active')=='TiposDescansos')

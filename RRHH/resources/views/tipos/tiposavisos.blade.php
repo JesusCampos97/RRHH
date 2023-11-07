@@ -331,7 +331,7 @@
                                        
             },
             responsive: true,
-            columns: [{ data: "nombre", title: "Nombre" }, { data: "urgente", title: "¿Es Urgente?" }, { data: "usa_whatsapp_avisos", title: "¿Usa WhatsApp?" }],
+            columns: [{ data: "nombre", title: "Nombre" }, { data: "urgente_case", title: "¿Es Urgente?" }, { data: "usa_whatsapp_avisos_case", title: "¿Usa WhatsApp?" }],
         });
 
         var datatable2 = $('#table_2').DataTable({
@@ -348,7 +348,7 @@
                                        
             },
             responsive: true,
-            columns: [{ data: "nombre", title: "Nombre" }, { data: "urgente", title: "¿Es Urgente?" }, { data: "usa_whatsapp_avisos", title: "¿Usa WhatsApp?" }],
+            columns: [{ data: "nombre", title: "Nombre" }, { data: "urgente_case", title: "¿Es Urgente?" }, { data: "usa_whatsapp_avisos_case", title: "¿Usa WhatsApp?" }],
         });
 
 

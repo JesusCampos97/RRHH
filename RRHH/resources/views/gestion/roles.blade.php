@@ -8,24 +8,22 @@
 
             <div class="card mt-2">
                 <div class="card-header">
-                    <h3 class="card-title">Listado de Tipos de Documentos</h3>
+                    <h3 class="card-title">Listado de Roles</h3>
                 </div>
-
-                
 
                 <div class="card-body">
 
                     <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="tab-tipos-documentos-activos" data-toggle="pill" href="#tab-tipo-documentos-activos-tab" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Tipos de documentos activos</a>
+                            <a class="nav-link active" id="tab-roles-activos" data-toggle="pill" href="#tab-roles-activos-tab" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Roles activos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tab-tipos-documentos-no-activos" data-toggle="pill" href="#tab-tipo-documentos-no-activos-tab" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Tipos de documentos no activos</a>
+                            <a class="nav-link" id="tab-roles-no-activos" data-toggle="pill" href="#tab-roles-no-activos-tab" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Roles no activos</a>
                         </li>
                     </ul>
 
                     <div class="tab-content" id="custom-content-below-tabContent">
-                        <div class="tab-pane fade active show" id="tab-tipo-documentos-activos-tab" role="tabpanel" aria-labelledby="tab-tipos-documentos-activos">
+                        <div class="tab-pane fade active show" id="tab-roles-activos-tab" role="tabpanel" aria-labelledby="tab-roles-activos">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -36,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tab-tipo-documentos-no-activos-tab" role="tabpanel" aria-labelledby="tab-tipos-documentos-no-activos">
+                        <div class="tab-pane fade" id="tab-roles-no-activos-tab" role="tabpanel" aria-labelledby="tab-roles-no-activos">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -48,7 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -72,12 +69,12 @@
 
 @section('modal')
 
-<!-- Modal  Create-->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createTitle" aria-hidden="true" style="padding-right:0px">
+ <!-- Modal  Create-->
+ <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createTitle" aria-hidden="true" style="padding-right:0px">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" style="min-width: 650px">
             <div class="modal-header">
-            <h1>Añadir Tipo de Documento</h1>
+            <h1>Añadir Rol</h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -85,23 +82,18 @@
              
             <div class="modal-body" style=" margin-top: -2em;">
                 
-                <form action="" method="POST" name="createTipoDocumento" id="createTipoDocumento">
+                <form action="" method="POST" name="createRol" id="createRol">
                     @csrf
                     <hr>
                     <div class="card-body" style="padding: 0;">
                         <div class="form-group">
                             <label style="font-size:13px" for="nombre"><b>Nombre*</b></label>
                             <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombre" required>
-                        </div> 
+                        </div>
                         <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox"  id="flexCheckFirmaElectronica" style="
-                                margin-left: -1.25em;
-                                margin-top: 0.25em;
-                            "  value="0" onclick="cambiarValor()">
-                                <label class="form-check-label" for="flexCheckFirmaElectronica">¿Usa firma electrónica?</label>
-                            </div>
-                        </div>         
+                            <label style="font-size:13px" for="descripcion"><b>Descripción</b></label>
+                            <input class="form-control form-control-border border-width-2" type="text" placeholder="Descripción" name="descripcion" id="descripcion" required>
+                        </div>   
                    </div>
                    <hr>
                     <div class="card-footer" style="background-color: white; padding: 0;">
@@ -109,11 +101,13 @@
                         <button type="button" class="btn btn-primary float-right" id="insertDataButton">Aceptar</button>
                     </div>
               
-                </form>                         
+                </form>
+                          
             </div>
         </div>
     </div>
 </div>
+
 
 
  <!-- Modal  Update-->
@@ -121,7 +115,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content"  style="min-width: 650px">
         <div class="modal-header">
-        <h1>Actualizar Tipo de Documento</h1>
+        <h1>Actualizar Rol</h1>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -137,15 +131,10 @@
                         <input class="form-control form-control-border border-width-2" type="text" placeholder="Nombre" name="nombre" id="nombreEditar" required>
                     </div>
                     <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="flexCheckFirmaElectronicaEditar" style="
-                            margin-left: -1.25em;
-                            margin-top: 0.25em;
-                        "  value="0" onclick="cambiarValor()">
-                            <label class="form-check-label" for="flexCheckFirmaElectronicaEditar">¿Usa firma electrónica?</label>
-                        </div>
-                    </div> 
-                   
+                        <label style="font-size:13px" for="descripcion"><b>Descripción</b></label>
+                        <input class="form-control form-control-border border-width-2" type="text" placeholder="Descripción" name="descripcion" id="descripcionEditar" required>
+                    </div>
+                    
                </div>
 
                 <hr>
@@ -165,12 +154,13 @@
     </div>
 </div>
 
+
  <!-- Modal  Delete-->
- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h1>Desactivar Tipo de Documento</h1>
+            <h1>Desactivar Rol</h1>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -183,12 +173,12 @@
                 <hr>
                 <div class="container" >
                   <div class="form-group">
-                    <p>¿Deseas marcar como inactivo al tipo de documento?</p> 
+                    <p>¿Deseas marcar como inactivo al rol?</p> 
                   </div>                     
               
                 </div>
                <hr>
-                <div class="card-footer" style="background-color: white; padding: 0;">
+               <div class="card-footer" style="background-color: white; padding: 0;">
                     <button type="button"  class="btn btn-secondary float-left"  id="DeleteDataButtonClose" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button"  id="DeleteDataButton" class="btn btn-primary float-right">Aceptar</button>
                 </div>
@@ -204,7 +194,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h1>Activar Tipo de Documento</h1>
+            <h1>Activar Rol</h1>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -217,24 +207,21 @@
                 <hr>
                 <div class="container" >
                   <div class="form-group">
-                    <p>¿Deseas volver a activar el tipo de documento?</p> 
+                    <p>¿Deseas volver a activar el rol?</p> 
                   </div>                     
               
                 </div>
                <hr>
-               <div class="card-footer" style="background-color: white; padding: 0;">
+                <div class="card-footer" style="background-color: white; padding: 0;">
                     <button type="button"  class="btn btn-secondary float-left"  id="NoActivoButtonClose" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button"  id="NoActivoButton" class="btn btn-primary float-right">Aceptar</button>
                 </div>
-          
               
               </form>
             </div>
         </div>
     </div>
 </div>
-
-
 
 @endsection
 
@@ -244,31 +231,17 @@
 
 <script>
 
-    function cambiarValor(){
-           if( document.getElementById("flexCheckFirmaElectronica").checked){
-                document.getElementById("flexCheckFirmaElectronica").value=1;
-           }else{
-                document.getElementById("flexCheckFirmaElectronica").value=0;
-           }
-
-           if( document.getElementById("flexCheckFirmaElectronicaEditar").checked){
-                document.getElementById("flexCheckFirmaElectronicaEditar").value=1;
-           }else{
-                document.getElementById("flexCheckFirmaElectronicaEditar").value=0;
-           }
-    }
-
-
     $(document).ready( function () {
         
 
         //selectdata
+
         var datatable = $('#table_id').DataTable({
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },
             ajax: {
-                url: "{{route('listarTiposDocumentos')}}",
+                url: "{{route('listarRoles')}}",
                 type: 'post',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr("content"),
@@ -277,16 +250,15 @@
                                        
             },
             responsive: true,
-            columns: [{ data: "nombre", title: "Nombre" }, { data: "usa_firma_electronica_case", title: "¿Usa firma electrónica?" }],
+            columns: [{ data: "name", title: "Nombre" }, { data: "description", title: "Descripción"}],
         });
 
-        
         var datatable2 = $('#table_2').DataTable({
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },
             ajax: {
-                url: "{{route('listarTiposDocumentos')}}",
+                url: "{{route('listarRoles')}}",
                 type: 'post',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr("content"),
@@ -295,9 +267,8 @@
                                        
             },
             responsive: true,
-            columns: [{ data: "nombre", title: "Nombre" }, { data: "usa_firma_electronica_case", title: "¿Usa firma electrónica?" }],
+            columns: [{ data: "name", title: "Nombre" }, { data: "description", title: "Descripción"}],
         });
-
 
         //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
         $('#table_id tbody').on('click', 'td.dtr-control', function (e) {
@@ -318,8 +289,8 @@
             } 
         } );
 
-         //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
-         $('#table_2 tbody').on('click', 'td.dtr-control', function (e) {
+        //hacemos el trigger de un onclick, concretamente de un click en una etiqueta td con una clase (class) dtr-control
+        $('#table_2 tbody').on('click', 'td.dtr-control', function (e) {
 
             //me cojo la row del td al que he dado click
             var tr = $(this).closest('tr');
@@ -340,7 +311,6 @@
         var data = null
         $('#table_id tbody').on('click', 'tr', function () {
             data = datatable.row(this).data();
-            datatable.row(this).index
             if(data==undefined)
             {
                 var tr = $(this.closest('tr'));
@@ -349,11 +319,12 @@
                 }
                 data = datatable.row(tr).data();
             }
+            datatable.row(this).index
             //console.log( datatable.row(this).hasClass('testCVs'));
-             //console.log(data)
+
             //alert('You clicked on ' + data["id"] + "'s row");
             $.ajax({
-                url: "{{route('getDataTiposDocumentos')}}",
+                url: "{{route('getDataRoles')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -366,8 +337,8 @@
                     console.log(dataResult)
                     //console.log(dataResult[1])
                     dataJson=JSON.parse(dataResult)
-                    document.getElementById('nombreEditar').value=dataJson[0]["nombre"];
-                    document.getElementById('flexCheckFirmaElectronicaEditar').checked=dataJson[0]["usa_firma_electronica"];
+                    document.getElementById('nombreEditar').value=dataJson[0]["name"];
+                    document.getElementById('descripcionEditar').value=dataJson[0]["description"];
 
                     $('#updateModal').modal('show');        
                 },
@@ -377,7 +348,6 @@
             });
         });
 
-        
         var data2 = null
         $('#table_2 tbody').on('click', 'tr', function () {
             data2 = datatable2.row(this).data();
@@ -386,11 +356,10 @@
 
         });
 
-
-    //deletedata
-    $("#NoActivoButton").click(function(){
+        //deletedata
+        $("#NoActivoButton").click(function(){
             $.ajax({
-                url: "{{route('activadesactivaTiposDocumentos')}}",
+                url: "{{route('activadesactivaRoles')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -417,12 +386,13 @@
                     msgError("Error genérico. Por favor, inténtelo más tarde.")
                 }
             });
-    }); 
+        }); 
+
 
         //deletedata
         $("#DeleteDataButton").click(function(){
             $.ajax({
-                url: "{{route('activadesactivaTiposDocumentos')}}",
+                url: "{{route('activadesactivaRoles')}}",
                 type: "POST",
                 cache: false,
                 data:{
@@ -456,7 +426,7 @@
         
         //insertdata
         $("#insertDataButton").click(function(e){
-            var formulario = $('#createTipoDocumento');
+            var formulario = $('#createRol');
 
             // Validación de campos requeridos
             var todosLosCamposSonValidos = true;
@@ -474,15 +444,16 @@
                 msgError('Por favor, complete todos los campos requeridos')
                 return;
             }
+            
                 
                 $.ajax({
-                    url: "{{route('insertTiposDocumentos')}}",
+                    url: "{{route('insertRoles')}}",
                     type: "POST",
                     cache: false,
                     data:{
                         _token:'{{ csrf_token() }}',
                         nombre: $('#nombre').val(),
-                        usa_firma_electronica: $("#flexCheckFirmaElectronica").val()
+                        descripcion: $('#descripcion').val()
 
                     },
                     success: function(dataResult){
@@ -501,8 +472,8 @@
                         msgError("Error genérico. Por favor, inténtelo más tarde.")
                     }
 
-                });
-       
+                });            
+
         }); 
 
         //updatedata
@@ -527,13 +498,13 @@
                 return;
             }
             $.ajax({
-                url: "{{route('updateTiposDocumentos')}}",
+                url: "{{route('updateRoles')}}",
                 type: "POST",
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}',
-                    nombre: $('#nombreEditar').val(),  
-                    usa_firma_electronica:  $('#flexCheckFirmaElectronicaEditar').val(),
+                    nombre: $('#nombreEditar').val(),
+                    descripcion: $('#descripcionEditar').val(),
                     id: data["id"]
                 },
 
@@ -554,6 +525,8 @@
                 }
             });
         }); 
+
+
 
         /*para el caso en el que no insertemos ni nada por ajax, por ejemplo un post de un formulario que devuelve el action*/
         @if(Session::has('success'))
@@ -576,8 +549,9 @@
             });*/
         @endif
 
-    });
 
+        });
+        
     
 </script>
 

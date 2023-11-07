@@ -32,7 +32,9 @@ class TiposDocumentosController extends Controller
         $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_documentos where activo='".$activo."';";
+            $sql="select *,case when usa_firma_electronica='1' then 'Sí' else 'No' end as usa_firma_electronica_case
+             from tipo_documentos           
+             where activo='".$activo."';";
             $tipo_documentos = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipo_documentos

@@ -33,7 +33,10 @@ class TiposAvisosController extends Controller
         $activo=$request->activo;
         try
         { 
-            $sql="select * from tipo_avisos where activo='".$activo."';";
+            $sql="select *,
+            case when urgente='1' then 'Sí' else 'No' end as urgente_case,
+            case when usa_whatsapp_avisos='1' then 'Sí' else 'No' end as usa_whatsapp_avisos_case
+             from tipo_avisos where activo='".$activo."';";
             $tipo_avisos = $this->executeSelect($sql);
             $data = array(
                 'data' => $tipo_avisos
